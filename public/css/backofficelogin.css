@@ -1,0 +1,72 @@
+/* Color Palette */
+:root{
+    --onyx: #3D3D3DFF;
+    --silver: #9C9C9C;
+    --white: #EBEBEB;
+    --falu-red: #712121FF;
+}
+
+/* Body */
+body{
+    background-color: var(--onyx);
+    font-family: 'Helvetica', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login */
+.container{
+    background-color: var(--white);
+    border-radius: 1vw;
+    height: 60vh;
+    width: 60vw;
+    font-size: 2rem;
+    margin-top: 17vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    /* Form */
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        
+
+        /* Text Input */
+        input{
+            width: 60%;
+            height: 5vh;
+            margin: 1vh 0;
+            margin-bottom: 2vh;
+            padding: 1vh;
+            border: none;
+            border-radius: 0.5vw;
+            font-family: 'Helvetica', sans-serif;
+            font-size: 2.5vh;
+            color: var(--onyx);
+        }
+
+        input[type=password]{
+            margin-bottom: 5vh;
+        }
+
+        /* Submit Button */
+        .btn{
+            width: 25%;
+            margin: 1vh 0;
+            padding: 1vh;
+            border: none;
+            border-radius: 1vw;
+            font-family: 'Helvetica', sans-serif;
+            font-size: 3vh;
+            color: var(--white);
+            background-color: var(--falu-red);
+            cursor: pointer;
+        }
+    }
+}

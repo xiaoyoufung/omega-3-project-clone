@@ -1,0 +1,140 @@
+
+.navbar, #secondNav {
+    background-color: var(--silver);
+}
+
+
+.editnav {
+    background-color: var(--silver);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+
+    h1 {
+        order: 1;
+        padding-top: 12px;
+    }
+
+    .navbar-toggler {
+        order: 0;
+        padding-left: 0%;
+        position: fixed;
+        left: 3%;
+    }
+}
+
+#item-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 14vh;
+
+    .rounded-table {
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .rounded-table thead tr:first-child th:first-child {
+        border-top-left-radius: 10px;
+    }
+
+    .rounded-table thead tr:first-child th:last-child {
+        border-top-right-radius: 10px;
+    }
+
+    .rounded-table tbody tr:last-child td:first-child {
+        border-bottom-left-radius: 10px;
+    }
+
+    .rounded-table tbody tr:last-child td:last-child {
+        border-bottom-right-radius: 10px;
+    }
+
+    .rounded-table thead th, .rounded-table tbody td {
+        border: 1px solid #dee2e6; /* You can customize the border style */
+    }
+
+    .row_fix{
+        width: 100%;
+    }
+
+    .item {
+        position: relative;
+        padding: 10px;
+        margin: 10px;
+
+        @media screen and (max-width: 992px) {
+            margin-bottom: 15vw;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all ease 0.3s;
+            opacity: 1;
+            cursor: pointer;
+
+            @media (max-width: 991px) {
+                width: 20vw;
+                height: 28vw;
+            }
+        }
+
+        img:hover {
+            opacity: 0.8;
+        }
+
+        .item-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            margin: 10px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all ease 0.3s;
+            opacity: 1;
+            cursor: pointer;
+
+            h3 {
+                font-size: 2.5vw;
+                color: var(--onyx);
+                padding: 10px;
+            }
+
+            p {
+                font-size: 2vw;
+                color: var(--onyx);
+                padding: 10px;
+            }
+
+            p:hover {
+                color: var(--onyx);
+            }
+
+            a {
+                transition: all ease 0.3s;
+                color: var(--onyx);
+                opacity: 1;
+                font-size: 3em;
+            }
+        }
+    }
+
+    .header{
+        background-color: var(--silver);
+        width: 100%;
+    }
+}
+h2 {
+    text-align: center;
+}

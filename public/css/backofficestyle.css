@@ -1,0 +1,107 @@
+/* Color Palette */
+:root{
+    --onyx: #3D3D3DFF;
+    --silver: #9C9C9C;
+    --white: #EBEBEB;
+    --falu-red: #712121FF;
+}
+
+/* Body */
+body{
+    font-family: 'Helvetica', sans-serif;
+}
+
+/* Sidebar */
+#sidebar {
+    background-color: var(--onyx);
+    font-family: 'Helvetica', sans-serif;
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    .sidebar-sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        height: calc(100vh - 20px);
+        text-align: center;
+    }
+    
+    .sidebar-heading {
+        color: var(--white);
+        font-size: 2.5rem;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        margin-bottom: 1rem;
+    }
+
+    button.btn {
+        width: 9em;
+        border: var(--silver);
+        background-color: var(--silver);
+        padding: 0.5rem 1rem;
+        margin: 0 0 1rem 0;
+        color: var(--white);
+    }
+    button.btn:hover {
+        padding: 0.5rem 1rem;
+        background-color: var(--white);
+        color: var(--onyx);
+    }
+    button.btn.active {
+        border: var(--white);
+        font-weight: 700;
+        padding: 0.5rem 1rem;
+        background-color: var(--white);
+        color: var(--onyx);
+    }
+}
+
+/* Main */
+#main {
+    background-color: var(--white);
+    font-family: 'Helvetica', sans-serif;
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100vh;
+    top: 0;
+    right:0;
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    /* Container */
+    .container-fluid{
+        height: calc(100vh - 20px);
+        padding: 0.5rem 1rem;
+
+        button.btn{
+            margin: 1vh 0;
+            padding: 1vh 2vw;
+            margin: auto 2vw auto 0;
+            border: none;
+            border-radius: 1vw;
+            font-family: 'Helvetica', sans-serif;
+            font-size: 3vh;
+            color: var(--onyx);
+            background-color: var(--silver);
+            cursor: pointer;
+        }
+        button.btn:hover{
+            background-color: var(--onyx);
+            color: var(--white);
+        }
+        button.btn.active{
+            background-color: var(--falu-red);
+            color: var(--white);
+        }
+    }
+}

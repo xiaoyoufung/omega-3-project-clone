@@ -65,6 +65,9 @@ app.get('/product/shoes', async (req, res) => {
     });
 })
 
+app.get('/shoppingcart', (req, res) => {
+    res.render("frontend/shoppingcart");
+})
 
 app.get('/wishlist', (req, res) => {
     res.render("frontend/wishlist");

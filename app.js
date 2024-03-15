@@ -70,6 +70,10 @@ app.get('/wishlist', (req, res) => {
     res.render("frontend/wishlist");
 })
 
+app.get('/cart', (req, res) => {
+    res.render("frontend/shoppingcart");
+})
+
 // app.post('/books/add', (req, res) => {
 //     const { bookName } = req.body; 
 //     const sql = 'INSERT INTO books (BookName) VALUES (?)'; 

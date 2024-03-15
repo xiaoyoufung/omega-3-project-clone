@@ -74,6 +74,18 @@ app.get('/cart', (req, res) => {
     res.render("frontend/shoppingcart");
 })
 
+app.get('/admin', (req, res) => {
+    res.render("backoffice/inventory");
+})
+
+app.get('/admin/order', (req, res) => {
+    res.render("backoffice/order");
+})
+
+app.get('/admin/login', (req, res) => {
+    res.render("backoffice/adminlogin");
+})
+
 // app.post('/books/add', (req, res) => {
 //     const { bookName } = req.body; 
 //     const sql = 'INSERT INTO books (BookName) VALUES (?)'; 

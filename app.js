@@ -1,11 +1,24 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-const mysql = require('mysql2');
-const path = require('path');
-const db = require("./config/db");
-const listCategory = require("./model/listCategory");
-const listProduct = require("./model/listProduct");
+const listCategory = require('./model/listCategory');
+const listProduct = require('./model/listProduct');
+const listUser = require('./model/listUser');
+
+// login-register sesstion
+const session = require('express-session');
+const { forEach, forIn } = require('lodash');
+const store = new session.MemoryStore();
+
+const app = express();
+
+// define session
+app.use(session({
+    secret: 'secret',
+    cookie: { maxAge: 1000 },
+    saveUninitialized: false,
+    store
+}));
+
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,18 +31,55 @@ app.set("view engine", "ejs");
 
 app.get('/', async (req, res) => {
     try {
+
         res.render("frontend/index");
 
+        // Initial default data to the DB
         await listCategory.defineInitialCategories();
         await listProduct.defineInitialProducts();
+        await listUser.defineInitialUsers();
+
         //res.status(500).send("Internal Server Error");
         //res.sendFile(path.join(__dirname, 'public', 'inventory.html'));
-        
     } catch (error) {
         console.log(error);
         res.status(500).send("Internal Server Error");
     }
 });
+
+app.post('/auth', async (req, res) => {
+    const {username, password} = req.body;
+
+    const oldUserName = await listUser.findAllByKey('user_name', username);
+    const oldPwd = await listUser.findAllByKey('user_password', password);
+    
+    if(oldUserName && oldPwd){
+        if(req.session.authenticated){
+            res.json(req.session);
+        } else{
+            if(username == oldUserName[0].user_name && password == oldPwd[0].user_password){
+                req.session.authenticated = true;
+                req.session.user = {
+                    username, password
+                };
+                res.json(req.session);
+            } else{
+                res.status(403).json({ msg: oldUserName[0].user_name});
+            }
+        }
+    }
+	
+});
+
+app.get('/login', async (req, res) => {
+    const items = await listProduct.findAll();
+
+      // Render the view with the provided data
+      res.render("frontend/login", {
+          newListItems: items,
+      });
+})
+
 
 app.get('/product', async (req, res) => {
     const items = await listProduct.findAll();

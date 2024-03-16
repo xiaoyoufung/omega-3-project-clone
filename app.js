@@ -47,30 +47,6 @@ app.get('/', async (req, res) => {
     }
 });
 
-app.post('/auth', async (req, res) => {
-    const {username, password} = req.body;
-
-    const oldUserName = await listUser.findAllByKey('user_name', username);
-    const oldPwd = await listUser.findAllByKey('user_password', password);
-    
-    if(oldUserName && oldPwd){
-        if(req.session.authenticated){
-            res.json(req.session);
-        } else{
-            if(username == oldUserName[0].user_name && password == oldPwd[0].user_password){
-                req.session.authenticated = true;
-                req.session.user = {
-                    username, password
-                };
-                res.json(req.session);
-            } else{
-                res.status(403).json({ msg: oldUserName[0].user_name});
-            }
-        }
-    }
-	
-});
-
 app.get('/login', async (req, res) => {
     const items = await listProduct.findAll();
 
@@ -78,7 +54,39 @@ app.get('/login', async (req, res) => {
       res.render("frontend/login", {
           newListItems: items,
       });
-})
+});
+
+app.post('/auth', async (req, res) => {
+    const {username, password} = req.body;
+
+    const oldUserName = await listUser.findAllByKey('user_name', username);
+    const oldPwd = await listUser.findAllByKey('user_password', password);
+
+    try {
+        if(username && password){
+            if(req.session.authenticated){
+                res.json(req.sessionID);
+            } else{
+                if(username == oldUserName[0].user_name && password == oldPwd[0].user_password){
+                    req.session.authenticated = true;
+                    req.session.user = {
+                        username, password
+                    };
+                    res.json(req.sessionID);
+                } else{
+                    res.redirect('/login');
+                }
+            }
+        }
+    } catch (error) {
+        res.redirect('/login');
+    }
+    
+    
+	
+});
+
+
 
 
 app.get('/product', async (req, res) => {

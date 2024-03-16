@@ -91,6 +91,12 @@ app.post('/auth', async (req, res) => {
 });
 
 
+// user logout
+app.get('/logout',(req,res)=>{
+    req.session.destroy(function (err) {
+      res.redirect('/');
+     });
+  })
 
 
 app.get('/product', async (req, res) => {

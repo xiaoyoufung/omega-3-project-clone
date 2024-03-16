@@ -23,12 +23,13 @@
         <div class="modal-content">
           <div class="modal-header">
 
-            
             <% if(!session.authenticated) { %>
               <% console.log(session.authenticated) %>
-              <a class="btn" href="/login"><i class="bi bi-person-circle"> Log in</i></a>
+              <a class="btn login" href="/login"><i class="bi bi-person-circle"> Log in</i></a>
             <% } else { %>
-              <a href="/more" class="link-light px-4">Hello, <b><%= session.user.username %></b></a>
+              Welcome back,
+              <a class="btn account" href="/more"><b><%= session.user.username %></b></a>
+              <a class="btn logout" href="/logout">Log Out</a>
             <% } %>
 
           </div>

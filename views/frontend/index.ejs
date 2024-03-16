@@ -22,7 +22,15 @@
       <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <a class="btn" href="/login"><i class="bi bi-person-circle"> Log In</i></a>
+
+            
+            <% if(!session.authenticated) { %>
+              <% console.log(session.authenticated) %>
+              <a class="btn" href="/login"><i class="bi bi-person-circle"> Log in</i></a>
+            <% } else { %>
+              <a href="/more" class="link-light px-4">Hello, <b><%= session.user.username %></b></a>
+            <% } %>
+
           </div>
           <div class="modal-body">
             <div class="nav flex-column flex-row">

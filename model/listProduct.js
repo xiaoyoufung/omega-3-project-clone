@@ -15,7 +15,7 @@ class ProductsModel extends BaseSQLModel {
         if (results[0] == undefined) {
           this.setinitialItems();
         } else {
-          console.log("All products:", results);
+          //console.log("All products:", results);
         }
       })
       .catch((error) => {

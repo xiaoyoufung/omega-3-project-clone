@@ -7,6 +7,7 @@ const listUser = require('./model/listUser');
 // login-register sesstion
 const session = require('express-session');
 const { forEach, forIn } = require('lodash');
+const Authen = require("./control/user-authen");
 const store = new session.MemoryStore();
 
 const app = express();
@@ -14,11 +15,15 @@ const app = express();
 // define session
 app.use(session({
     secret: 'secret',
-    cookie: { maxAge: 1000 },
+    cookie: { maxAge: 360000 },
     saveUninitialized: false,
     store
 }));
 
+app.use(function(req, res, next) {
+    res.locals.session = req.session;
+    next();
+  })
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,7 +36,6 @@ app.set("view engine", "ejs");
 
 app.get('/', async (req, res) => {
     try {
-
         res.render("frontend/index");
 
         // Initial default data to the DB
@@ -72,7 +76,9 @@ app.post('/auth', async (req, res) => {
                     req.session.user = {
                         username, password
                     };
-                    res.json(req.sessionID);
+
+                    // get user name of logged in user 
+                    res.redirect('/');
                 } else{
                     res.redirect('/login');
                 }
@@ -123,18 +129,22 @@ app.get('/product/shoes', async (req, res) => {
     });
 })
 
-app.get('/shoppingcart', (req, res) => {
-    res.render("frontend/shoppingcart");
-})
+// user must login to access to these page
 
 app.get('/wishlist', (req, res) => {
     res.render("frontend/wishlist");
 })
 
-app.get('/cart', (req, res) => {
+app.get('/cart', Authen.authentication, (req, res) => {
     res.render("frontend/shoppingcart");
 })
 
+// example
+app.get("/more", Authen.authentication, function (req, res) {
+    res.render("more", {pageName: "Account"});
+  });
+
+// backoffice side
 app.get('/admin', (req, res) => {
     res.render("backoffice/inventory");
 })

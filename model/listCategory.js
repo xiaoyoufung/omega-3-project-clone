@@ -19,7 +19,7 @@ class CategoriesModel extends BaseSQLModel {
         if (results[0] == undefined) {
           this.setinitialItems();
         } else {
-          console.log("All categories:", results);
+          //console.log("All categories:", results);
         }
       })
       .catch((error) => {

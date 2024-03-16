@@ -43,8 +43,6 @@ app.get('/', async (req, res) => {
         await listProduct.defineInitialProducts();
         await listUser.defineInitialUsers();
 
-        //res.status(500).send("Internal Server Error");
-        //res.sendFile(path.join(__dirname, 'public', 'inventory.html'));
     } catch (error) {
         console.log(error);
         res.status(500).send("Internal Server Error");

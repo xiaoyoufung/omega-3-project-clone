@@ -28,7 +28,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding-top: 14vh;
+    min-height: calc(100vh - 17.2em);
+    padding-top: 15em;
 
     .rounded-table {
         border-collapse: separate;

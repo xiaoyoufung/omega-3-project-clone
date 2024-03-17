@@ -154,39 +154,38 @@ body.modal-open #main{
 
 /*----------------------------------------------------------------*/
 .wishList{
-    margin: 5px;
+    min-height: calc(100vh - 14.1em);
     color: var(--onyx);
-    background-color: var(--onyx);
+    size: fill-container;
     padding-left: 20px; 
     padding-right: 20px; 
-    padding-top: 23vh;
+    padding-top: 15em;
 
-    .rounded-table {
-        border-collapse: separate;
-        border-spacing: 0;
-        border-radius: 10px;
-        overflow: hidden;
+    .table {
+        width: 100%;
+        margin-top: 20px;
     }
-
-    .rounded-table thead tr:first-child th:first-child {
-        border-top-left-radius: 10px;
+    
+    th, td {
+        text-align: center;
+        vertical-align: middle;
     }
-
-    .rounded-table thead tr:first-child th:last-child {
-        border-top-right-radius: 10px;
+    
+    img {
+        width: auto;
+        height: 100px; 
     }
-
-    .rounded-table tbody tr:last-child td:first-child {
-        border-bottom-left-radius: 10px;
+    
+    .btn.item-action {
+        font-size: 1.5rem;
+        color: var(--onyx);
+        background: none;
     }
-
-    .rounded-table tbody tr:last-child td:last-child {
-        border-bottom-right-radius: 10px;
+    
+    .btn.item-action:hover {
+        color: var(--falu-red);
     }
-
-    .rounded-table thead th, .rounded-table tbody td {
-        border: 1px solid #dee2e6; /* You can customize the border style */
-    }
+  
     
     h1 {
         text-align: left; 
@@ -361,30 +360,3 @@ body.modal-open #main{
         }
     }
 }
-
-
-.wishList .table {
-    width: 100%;
-    margin-top: 20px;
-  }
-  
-  .wishList th, .wishList td {
-    text-align: center;
-    vertical-align: middle;
-  }
-  
-  .wishList img {
-    width: auto;
-    height: 100px; 
-  }
-  
-  .wishList .btn.item-action {
-    font-size: 1.5rem;
-    color: var(--onyx);
-    background: none;
-  }
-  
-  .wishList .btn.item-action:hover {
-    color: var(--falu-red);
-  }
-  

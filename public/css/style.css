@@ -650,3 +650,20 @@ body.modal-open #main{
         }
     }
 }
+
+footer{
+    width: 100vw;
+    padding: 2rem;
+    background-color: var(--silver);
+    
+    
+    .footer-content{
+        justify-content: space-between;
+        align-items: center;
+        color: var(--white);
+        
+        p{
+            font-family: 'Courier New', Courier, monospace;
+        }
+    }
+}

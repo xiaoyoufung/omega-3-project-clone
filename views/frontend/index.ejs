@@ -17,35 +17,7 @@
 <body >
 
   <!-- Modal (Side Menu) -->
-  <div class="container">
-    <div class="modal fade" id="menu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-
-            <% if(!session.authenticated) { %>
-              <% console.log(session.authenticated) %>
-              <a class="btn login" href="/login"><i class="bi bi-person-circle"> Log in</i></a>
-            <% } else { %>
-              Welcome back,
-              <a class="btn account" href="/more"><b><%= session.user.username %></b></a>
-              <a class="btn logout" href="/logout">Log Out</a>
-            <% } %>
-
-          </div>
-          <div class="modal-body">
-            <div class="nav flex-column flex-row">
-              <a href="#top" class="nav-item nav-link">What's New</a>
-              <a href="#recommend" class="nav-item nav-link">Recommend</a>
-              <a href="#topSeller" class="nav-item nav-link">Top-Seller</a>
-              <a href="/product" class="nav-item nav-link">Products</a>
-              <a href="wishlist.html" class="nav-item nav-link">Wishlist</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%- include('../templates/frontend/modal') %>
 
   <!-- Main Body -->
   <div id="main">
@@ -53,32 +25,13 @@
     <!-- NavBar -->
     <div id="nav">
       <div class="logo fixed-top">
-        <a href="index.html">COOC</a>
+          <a href="/">COOC</a>
       </div>
       <nav class="navbar fixed-top">
-        <div class="container-fluid">
-          <a class="navbar-brand d-lg-none" href="index.html">COOC</a>
-          <div class="navbar-element">
-            <a class="btn d-none d-lg-block" href="#footer"><i class="bi bi-info-circle"> Contact Us</i></a>
-          </div>
-          <div class="navbar-element">
-            <a class="navbar-brand d-none d-lg-block" href="index.html">COOC</a>
-          </div>
-          <div class="navbar-element">
-            <a class="btn" href="shoppingcart.html"><i class="bi bi-cart"></i></a>
-            <div class="collapse collapse-horizontal" id="collapseWidthExample">
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              </form>
-            </div>
-            <button class="btn" type="submit" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-              <i class="bi bi-search"></i>
-            </button>
-            <button type="button" class="btn menu-toggle" data-bs-toggle="modal" data-bs-target="#menu"><i class="bi bi-list"></i></button>  
-          </div>
-        </div>
+        <%- include('../templates/frontend/navbar') %>
       </nav>
     </div>
+    
 
     <!-- Top Section / Carousel -->
     <section id="top">
@@ -228,14 +181,7 @@
   </div>
 
   <!-- Footer -->
-  <footer id="footer">
-    <div class="footer-content">
-      <h3>Contact us</h3>
-      <p>Phone: +66-93-050-9526</p>
-      <p>Email: cooc.cloth@gmail.com</p>
-      <p>copy 2024; Your Website. All rights reserved.</p>
-    </div>
-  </footer>
+  <%- include('../templates/frontend/footer') %>
   
   <!-- Script -->
   <script>

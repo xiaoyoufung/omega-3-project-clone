@@ -18,27 +18,9 @@
     <link rel="stylesheet" href="../css/product.css">
 </head>
 <body>
+
   <!-- Modal (Side Menu) -->
-  <div class="container">
-    <div class="modal fade" id="menu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <a class="btn" href="login.html"><i class="bi bi-person-circle"> Log In</i></a>
-          </div>
-          <div class="modal-body">
-            <div class="nav flex-column flex-row">
-              <a href="/#top" class="nav-item nav-link">What's New</a>
-              <a href="/#recommend" class="nav-item nav-link">Recommend</a>
-              <a href="/#topSeller" class="nav-item nav-link">Top-Seller</a>
-              <a href="#" class="nav-item nav-link">Products</a>
-              <a href="/wishlist" class="nav-item nav-link">Wishlist</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%- include('../templates/frontend/modal') %>
 
   <!-- Main Body -->
   <div id="main">
@@ -46,43 +28,23 @@
     <!-- NavBar -->
     <div id="nav">
       <nav class="navbar fixed-top white">
-        <div class="container-fluid">
-          <a class="navbar-brand d-lg-none" href="index.html">COOC</a>
-          <div class="navbar-element">
-            <a class="btn d-none d-lg-block" href="#footer"><i class="bi bi-info-circle"> Contact Us</i></a>
-          </div>
-          <div class="navbar-element">
-            <a class="navbar-brand d-none d-lg-block" href="/">COOC</a>
-          </div>
-          <div class="navbar-element">
-            <a class="btn" href="shoppingcart.html"><i class="bi bi-cart"></i></a>
-            <div class="collapse collapse-horizontal" id="collapseWidthExample">
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              </form>
-            </div>
-            <button class="btn" type="submit" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-              <i class="bi bi-search"></i>
-            </button>
-            <button type="button" class="btn menu-toggle" data-bs-toggle="modal" data-bs-target="#menu"><i class="bi bi-list"></i></button>  
-          </div>
-        </div>
+        <%- include('../templates/frontend/navbar') %>
+
+        <!-- second nav -->
         <div class="container-fluid" id="secondNav">
-          <nav class="nav nav-shopping nav-pills nav-justified w-100">
-              <div class="editnav container-fluid">
-                  <button class="navbar-toggler" type="button" onclick="window.history.go(-1);">
-                      <i class="bi bi-arrow-left"></i>
-                  </button>
-                  <h1>Product</h1>
-              </div>
-          </nav>
+          <div class="page-nav container-fluid w-100">
+            <button class="page-toggler" type="button" onclick="window.history.go(-1);">
+              <i class="bi bi-arrow-left"></i>
+            </button>
+            <h1>Product</h1>
+          </div>
+          <div class="nav nav-product nav-pills nav-justified w-100">
+            <a class="nav-link active" href="/product" onclick="toggleActive(this)">All Products</a>
+            <a class="nav-link" href="/product/tops" onclick="toggleActive(this)">Tops</a>
+            <a class="nav-link" href="/product/bottoms" onclick="toggleActive(this)">Bottoms</a>
+            <a class="nav-link" href="/product/shoes" onclick="toggleActive(this)">Shoes</a>
+          </div>
         </div>
-        <nav class="nav nav-product nav-pills nav-justified w-100">
-          <a class="nav-link active" href="/product" onclick="toggleActive(this)">All Products</a>
-          <a class="nav-link" href="/product/tops" onclick="toggleActive(this)">Tops</a>
-          <a class="nav-link" href="/product/bottoms" onclick="toggleActive(this)">Bottoms</a>
-          <a class="nav-link" href="/product/shoes" onclick="toggleActive(this)">Shoes</a>
-        </nav>
       </nav>
     </div>
 
@@ -108,14 +70,7 @@
   </div>
 
     <!-- Footer -->
-    <footer id="footer">
-      <div class="footer-content">
-        <h3>Contact us</h3>
-        <p>Phone: +66-93-050-9526</p>
-        <p>Email: cooc.cloth@gmail.com</p>
-        <p>copy 2024; Your Website. All rights reserved.</p>
-      </div>
-    </footer>
+    <%- include('../templates/frontend/footer') %>
 
   <!-- Script -->
   <script>

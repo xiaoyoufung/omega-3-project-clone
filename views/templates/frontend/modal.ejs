@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="modal fade" id="menu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <% if(!session.authenticated) { %>
+              <% console.log(session.authenticated) %>
+              <a class="btn login" href="/login"><i class="bi bi-person-circle"> Log in</i></a>
+            <% } else { %>
+              Welcome back,
+              <a class="btn account" href=""><b><%= session.user.username %></b></a>
+              <a class="btn logout" href="/logout">Log Out</a>
+            <% } %>
+
+          </div>
+          <div class="modal-body">
+            <div class="nav flex-column flex-row">
+              <a href="/#top" class="nav-item nav-link">What's New</a>
+              <a href="/#recommend" class="nav-item nav-link">Recommend</a>
+              <a href="/#topSeller" class="nav-item nav-link">Top-Seller</a>
+              <a href="/product" class="nav-item nav-link">Products</a>
+              <a href="/wishlist" class="nav-item nav-link">Wishlist</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

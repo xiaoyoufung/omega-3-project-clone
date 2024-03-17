@@ -16,7 +16,6 @@ class UsersModel extends BaseSQLModel {
           this.setinitialUsers();
         } else {
           console.log("All user:", results);
-          console.log(this.findAllByKey('user_name', 'test'));
         }
       })
       .catch((error) => {
@@ -29,10 +28,17 @@ class UsersModel extends BaseSQLModel {
   async setinitialUsers() {
     const user1 = {
       user_name: "test",
-      user_password: "1234"
+      user_password: "1234",
+      isAdmin: "0",
     };
 
-    const defaultUsers = [user1];
+    const admin1 = {
+      user_name: "admin",
+      user_password: "1111",
+      isAdmin: "1"
+    }
+
+    const defaultUsers = [user1, admin1];
 
     defaultUsers.forEach((item) =>
       this.create(item)

@@ -23,7 +23,7 @@ app.use(session({
 app.use(function(req, res, next) {
     res.locals.session = req.session;
     next();
-  })
+  });
 
 app.use(express.static("public"));
 
@@ -62,35 +62,44 @@ app.get('/login', async (req, res) => {
 // log-in authentication for user & admin
 app.post('/auth', async (req, res) => {
     const {username, password} = req.body;
-
     const oldUserName = await listUser.findAllByKey('user_name', username);
     const oldPwd = await listUser.findAllByKey('user_password', password);
+    const isAdmin = await oldUserName[0].isAdmin;
 
     try {
         if(username && password){
             if(req.session.authenticated){
-                res.json(req.sessionID);
+                console.log(req.session);
+                res.redirect('/');
             } else{
                 if(username == oldUserName[0].user_name && password == oldPwd[0].user_password){
                     req.session.authenticated = true;
                     req.session.user = {
                         username, password
                     };
-
-                    // get user name of logged in user 
-                    res.redirect('/');
+                    // check if user isAdmin
+                    if(isAdmin == 0 ){
+                        req.session.isAdmin = false;
+                        res.redirect('/');
+                    } else{
+                        req.session.isAdmin = true;
+                        res.redirect('/admin');
+                    }
+                    
                 } else{
                     res.redirect('/login');
                 }
             }
+        } else{
+            throw err;
         }
     } catch (error) {
         res.redirect('/login');
     }
-    
-    
 	
 });
+
+
 
 
 // user logout
@@ -141,12 +150,12 @@ app.get('/wishlist', (req, res) => {
     res.render("frontend/wishlist");
 })
 
-app.get('/cart', Authen.authentication, (req, res) => {
+app.get('/cart', Authen.userAuthentication, (req, res) => {
     res.render("frontend/shoppingcart");
 })
 
 // example
-app.get("/more", Authen.authentication, function (req, res) {
+app.get("/more", Authen.userAuthentication, function (req, res) {
     res.render("more", {pageName: "Account"});
   });
 

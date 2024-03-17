@@ -31,14 +31,6 @@ module.exports.userAuthentication = async (req, res, next) => {
 
 module.exports.adminAuthentication = async (req, res, next) => {
 
-
-    // const session_password = req.session.user.password;
-
-    // check if found username and password
-    // if (!session_username || !session_password) {
-    //     return res.redirect('/login?q=session-expired');
-    // }
-
     try {
         // get logged in sessionID
         const loginSession = req.sessionID;

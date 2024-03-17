@@ -235,7 +235,7 @@ body.modal-open #main{
                     a{
                         padding: 0 5vw;
                         display: table-cell;
-                        color: var(--onyx);
+                        color: var(--white);
 
                         @media screen and (max-width: 992px){
                             padding: 0 15vw;

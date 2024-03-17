@@ -1,0 +1,90 @@
+
+<div id="sidebar" class="col-auto px-lg-2 px-0 sticky-top h-100">
+    <div class="d-flex flex-column align-items-center px-3 pt-2 min-vh-100">
+        <ul class="nav nav-pills flex-column mb-lg-auto mb-0 align-items-center" id="menu">
+            <li class="nav-container">
+                <button data-bs-toggle="collapse" data-bs-target="#page" class="nav-header align-middle">
+                    <h4><i class="bi bi-database-fill"></i> <span class="ms-1 d-none d-lg-inline"><b>Dashboard</b></span></h4>
+                </button>
+                <ul class="collapse show nav flex-column ms-1" id="page">
+                    <li>
+                        <a href="/admin" class="nav-link" onclick="toggleActive(this)"><i class="bi bi-box-seam"></i> <span class="d-none d-lg-inline">Inventory</span></a>
+                    </li>
+                    <li>
+                        <a href="admin/sales" class="nav-link" onclick="toggleActive(this)"><i class="bi bi-graph-up"></i> <span class="d-none d-lg-inline">Sales History</span></a>
+                    </li>
+                </ul>
+            </li>
+            <hr>
+            <hr>
+
+            <!-- provide if-condition to check -->
+            <% if(pageName == 'inventory') { %>
+                <li class="nav-container">
+                    <button data-bs-toggle="collapse" data-bs-target="#filter" class="nav-header align-middle">
+                        <h4><i class="bi bi-funnel-fill"></i> <span class="ms-1 d-none d-lg-inline"><b>Group By</b></span></h4>
+                    </button>
+                    <ul class="collapse show nav flex-column ms-1" id="filter">
+                        <li>
+                            <a class="nav-link active" onclick="toggleActive(this)">A<span class="d-none d-lg-inline">ll Items</span></a>
+                        </li>
+                        <li>
+                            <a class="nav-link" onclick="toggleActive(this)">T<span class="d-none d-lg-inline">ops</span></a>
+                        </li>
+                        <li>
+                            <a class="nav-link" onclick="toggleActive(this)">B<span class="d-none d-lg-inline">ottoms</span></a>
+                        </li>
+                        <li>
+                            <a class="nav-link" onclick="toggleActive(this)">S<span class="d-none d-lg-inline">hoes</span></a>
+                        </li>
+                    </ul>
+                </li>
+            <% }else{ %>
+                <li class="nav-container">
+                    <button data-bs-toggle="collapse" data-bs-target="#filter" class="nav-header align-middle">
+                        <h4><i class="bi bi-funnel-fill"></i> <span class="ms-1 d-none d-lg-inline"><b>Sort By</b></span></h4>
+                    </button>
+                    <ul class="collapse show nav flex-column ms-1" id="filter">
+                        <li>
+                            <a class="nav-link active" onclick="toggleActive(this)">T<span class="d-none d-lg-inline">op Seller</span></a>
+                        </li>
+                        <li>
+                            <a class="nav-link" onclick="toggleActive(this)">S<span class="d-none d-lg-inline">ales</span></a>
+                        </li>
+                    </ul>
+                </li>
+            <% } %>
+
+        </ul>
+        <hr>
+        <div class="dropdown pb-4">
+            <button class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="../Picture/carousel1.jpg" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                <span class="d-none d-lg-inline mx-1">Username</span>
+            </button>
+            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser">
+                <li><a class="dropdown-item" href="/"><i class="bi bi-arrow-left-right"></i> Switch to Store Page</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="/login?q=session-expired"><i class="bi bi-box-arrow-right"></i> Log Out</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleActive(clickedButton) {
+    // Get the parent container of the clicked button
+    var container = clickedButton.closest(".nav");
+
+    // Remove "active" class from all buttons within the container
+    var buttons = container.getElementsByClassName("nav-link");
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+    }
+
+    // Add "active" class only to the clicked button
+    clickedButton.classList.add("active");
+    }
+</script>

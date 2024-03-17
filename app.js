@@ -26,6 +26,7 @@ app.use(function(req, res, next) {
   })
 
 app.use(express.static("public"));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
@@ -58,6 +59,7 @@ app.get('/login', async (req, res) => {
       });
 });
 
+// log-in authentication for user & admin
 app.post('/auth', async (req, res) => {
     const {username, password} = req.body;
 
@@ -148,13 +150,14 @@ app.get("/more", Authen.authentication, function (req, res) {
     res.render("more", {pageName: "Account"});
   });
 
+
 // backoffice side
 app.get('/admin', (req, res) => {
-    res.render("backoffice/inventory");
+    res.render("backoffice/inventory", {pageName: "inventory"});
 })
 
-app.get('/admin/order', (req, res) => {
-    res.render("backoffice/order");
+app.get('/admin/sales', (req, res) => {
+    res.render("backoffice/sales", {pageName: "sales"});
 })
 
 app.get('/admin/login', (req, res) => {

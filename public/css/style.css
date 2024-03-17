@@ -59,40 +59,6 @@ body.modal-open #main{
         height: 100%;
         border-radius: 0;
         background-color: var(--white);
-
-        .modal-header{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-
-            a{
-                color: var(--falu-red);
-                font-size: 2rem;
-            }
-            a:hover{
-                transition: all ease 0.15s;
-                text-shadow: 0.15rem 0.15rem 0.2rem rgba(0,0,0,0.1);
-            }
-            .login, .login:hover{
-                color: var(--onyx);
-                font-size: 2rem;
-                text-decoration: none;
-                text-shadow: none;
-            }
-            .display-name{
-                font-size: 1rem;
-            }
-            .logout, .logout:hover{
-                color: var(--silver);
-                font-size: 1rem;
-                text-decoration: none;
-                text-shadow: none;                
-            }
-            .logout:hover{
-                color: var(--onyx);
-            }
-        }
     
         .modal-body{
             a{
@@ -104,6 +70,10 @@ body.modal-open #main{
             }
         }
     }
+}
+.container .btn{
+    font-size: 2rem;
+    color: var(--silver);
 }
 
 
@@ -647,6 +617,21 @@ body.modal-open #main{
         button.btn.active{
             background-color: var(--falu-red);
             color: var(--white);
+        }
+    }
+}
+
+footer{
+    padding: 2rem;
+    background-color: var(--silver);
+    
+    .footer-content{
+        justify-content: space-between;
+        align-items: center;
+        color: var(--onyx);
+        
+        p{
+            font-family: 'Courier New', Courier, monospace;
         }
     }
 }

@@ -15,81 +15,11 @@
             <%- include('../templates/backoffice/dashboard') %>
 
             <div id="main" class="col">
-                <table class="table">
-                    <thead class="sticky-top">
-                        <tr>
-                            <th scope="col">Product ID</th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Product Image</th>
-                            <th scope="col">Category ID</th>
-                            <th scope="col">Tag</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Price-Promo</th>
-                            <th scope="col">Sales Count</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Sample data -->
-                        <form action="/submit" method="post">
-                            <tr>
-                                <td>1</td>
-                                <td><input type="text" value="Shirt1" class="form-control"></td>
-                                <td class="prod-img">
-                                    <div class="img-container">
-                                        <span><img class="img-show" src="https://cdn.discordapp.com/attachments/1216787767233609818/1216788510472671304/20cce0c3014cb071508dba3a0c812ffb.png?ex=6601a99b&is=65ef349b&hm=b2a69e0423a03f49a47210e8814db42fa51fca7b6f038982f6eb3ca54e2385d9&" alt="product"></span>
-                                        <span><input class="img-url form-control" type="url" value="https://cdn.discordapp.com/attachments/1216787767233609818/1216788510472671304/20cce0c3014cb071508dba3a0c812ffb.png?ex=6601a99b&is=65ef349b&hm=b2a69e0423a03f49a47210e8814db42fa51fca7b6f038982f6eb3ca54e2385d9&"></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <select type="number" class="form-control" size="1">
-                                        <option value="1">Tops</option>
-                                        <option value="2">Bottoms</option>
-                                        <option value="3">Shoes</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select type="text" class="form-control">
-                                        <option value="">(-)</option>
-                                        <option value="New">New</option>
-                                        <option value="Sale">Sale</option>
-                                        <option value="New">Limited</option>
-                                    </select>
-                                </td>
-                                <td><input type="number" value="200.00" class="form-control"></td>
-                                <td><input type="number" value="180.00" class="form-control"></td>
-                                <td>100</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td><input type="text" value="Shirt2" class="form-control"></td>
-                                <td class="prod-img">
-                                    <div class="img-container">
-                                        <span><img class="img-show" src="https://cdn.discordapp.com/attachments/1216787767233609818/1216788510846095410/6dea9f3e09acc40503e90121e46dd274.png?ex=6601a99b&is=65ef349b&hm=ccc5d4a1e289282137ce05968e92ce57f5f82db9c6673729abee9c56232607e3&" alt="product"></span>
-                                        <span><input class="img-url form-control" type="url" value="https://cdn.discordapp.com/attachments/1216787767233609818/1216788510846095410/6dea9f3e09acc40503e90121e46dd274.png?ex=6601a99b&is=65ef349b&hm=ccc5d4a1e289282137ce05968e92ce57f5f82db9c6673729abee9c56232607e3&"></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <select type="number" class="form-control" size="1">
-                                        <option value="1">Tops</option>
-                                        <option value="2">Bottoms</option>
-                                        <option value="3">Shoes</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select type="text" class="form-control">
-                                        <option value="">(-)</option>
-                                        <option value="New">New</option>
-                                        <option value="Sale">Sale</option>
-                                        <option value="New">Limited</option>
-                                    </select>
-                                </td>
-                                <td><input type="number" value="220.00" class="form-control"></td>
-                                <td><input type="number" value="200.00" class="form-control"></td>
-                                <td>150</td>
-                            </tr>
-                        </form>
-                    </tbody>
-                </table>
+                <div class="row">
+                    <div class="col">
+                        <h1>Sales History</h1>
+                        <p>Graphs here and what not</p>
+                    </div>
 
                 <!-- <div id="Screen-Size-Checker">
                     <div class="d-none d-xxl-block">XXL</div>

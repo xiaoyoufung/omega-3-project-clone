@@ -6,7 +6,6 @@ const listUser = require('./model/listUser');
 
 // login-register sesstion
 const session = require('express-session');
-const { forEach, forIn } = require('lodash');
 const Authen = require("./control/user-authen");
 const store = new session.MemoryStore();
 
@@ -69,7 +68,6 @@ app.post('/auth', async (req, res) => {
     try {
         if(username && password){
             if(req.session.authenticated){
-                console.log(req.session);
                 res.redirect('/');
             } else{
                 if(username == oldUserName[0].user_name && password == oldPwd[0].user_password){
@@ -161,8 +159,9 @@ app.get("/more", Authen.userAuthentication, function (req, res) {
 
 
 // backoffice side
-app.get('/admin', Authen.adminAuthentication , (req, res) => {
-    res.render("backoffice/inventory", {pageName: "inventory"});
+app.get('/admin', Authen.adminAuthentication , async (req, res) => {
+    const items = await listProduct.findAll();
+    res.render("backoffice/inventory", {pageName: "inventory", products: items});
 })
 
 app.get('/admin/sales', Authen.adminAuthentication, (req, res) => {

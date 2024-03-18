@@ -6,10 +6,6 @@ class CategoriesModel extends BaseSQLModel {
     super("category"); //table 'products'
   }
 
-  speak() {
-    console.log("Hello!");
-  }
-
   //check if there is a record of todoItems in the database?
   // if there is no todoItems record, call setinitialItems() to define intial
   async defineInitialCategories() {

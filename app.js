@@ -189,6 +189,11 @@ app.get('/admin/sales', Authen.adminAuthentication, (req, res) => {
     res.render("backoffice/sales", { pageName: "sales" });
 })
 
+app.post('/add-item', (req, res) => {
+    listProduct.addNewProduct();
+    res.redirect('/admin');
+})
+
 
 app.listen(3500, () => {
     console.log('Server is running on port 3500');

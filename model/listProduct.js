@@ -60,7 +60,27 @@ class ProductsModel extends BaseSQLModel {
     return results;
 
   }
+
+  async addNewProduct(){
+
+    const newItem = new Product('new item', 'new item link', 0, 'add tag', 0, 0, 0);
+
+    const defaultItems = [newItem];
+
+    defaultItems.forEach((item) =>
+      this.create(item)
+        .then((insertId) => {
+          console.log("New user created with ID:", insertId);
+        })
+        .catch((error) => {
+          console.error("Error creating user:", error);
+        })
+    );
+
+  }
 }
+
+
 
 const ProductsDB = new ProductsModel();
 

@@ -187,8 +187,48 @@ app.get('/admin/inventory/:category', Authen.adminAuthentication, async (req, re
 
 app.get('/admin/sales', Authen.adminAuthentication, (req, res) => {
     res.render("backoffice/sales", { pageName: "sales" });
-})
+});
 
+app.get('/admin/delete-product/:id', (req, res) => {
+    let productID = parseInt(req.params.id);
+
+    listProduct.deleteByKey('product_id', productID);
+
+    res.redirect('/admin');
+});
+
+app.post('/add-item', (req, res) => {
+    listProduct.addNewProduct();
+    res.redirect('/admin');
+});
+
+app.post('/admin/inventory', (req, res) => {
+
+    // get changed value
+    prodID = req.body.productID;
+    prodName = req.body.productName;
+    prodImg = req.body.productImg;
+    prodCategory = req.body.productCategory;
+    prodPrice = req.body.productPrice;
+    prodProPrice = req.body.productPromotionPrice;
+    prodTag = req.body.productTag;
+    prodSale = req.body.productSaleCount;
+
+    const updateProduct = {
+        product_name: prodName,
+        category_id: prodCategory,
+        product_image: prodImg,
+        product_price: prodPrice,
+        product_price_promotion: prodProPrice,
+    }
+
+    listProduct.updateProduct(prodID, updateProduct)
+
+    
+    console.log(prodImg, prodName, prodPrice, prodProPrice, prodTag);
+
+    res.redirect('/admin');
+});
 
 app.listen(3500, () => {
     console.log('Server is running on port 3500');

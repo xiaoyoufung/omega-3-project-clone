@@ -34,6 +34,9 @@ body{
     }
 }
 
+html{
+    background-color: var(--silver);
+}
 
 /* Modal (Side Menu) */
 body.modal-open #main{
@@ -647,17 +650,28 @@ body.modal-open #main{
 
 footer{
     width: 100vw;
+    height: fit-content;
     padding: 2rem;
     background-color: var(--silver);
     
     
     .footer-content{
+        display: block;
         justify-content: space-between;
         align-items: center;
-        color: var(--white);
+        float: left;
         
         p{
             font-family: 'Courier New', Courier, monospace;
         }
     }
+    .flex-box {
+        display: block;
+        width: 200px; /* Width of the box */
+        height: 200px; /* Height of the box */
+        background: #f0f0f0; /* Background color */
+        float: right;
+    }
+    
 }
+

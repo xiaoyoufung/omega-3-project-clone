@@ -10,7 +10,7 @@ module.exports.userAuthentication = async (req, res, next) => {
 
         // get logged in user's username from session
         const session_username = req.session.user.username;
-        console.log(isAdminSession);
+
         if (!loginSession) {
             return res.redirect('/login?q=session-expired');
         }

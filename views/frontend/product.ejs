@@ -39,7 +39,7 @@
             <h1>Product</h1>
           </div>
           <div class="nav nav-product nav-pills nav-justified w-100">
-            <a class="nav-link active" href="/product" onclick="toggleActive(this)">All Products</a>
+            <a class="nav-link" href="/product" onclick="toggleActive(this)">All Products</a>
             <a class="nav-link" href="/product/tops" onclick="toggleActive(this)">Tops</a>
             <a class="nav-link" href="/product/bottoms" onclick="toggleActive(this)">Bottoms</a>
             <a class="nav-link" href="/product/shoes" onclick="toggleActive(this)">Shoes</a>
@@ -76,6 +76,12 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       console.log("JS is working!");
+      
+      // nav select
+      let navSelect = '<%- navSelect %>'
+        navSelect = parseInt(navSelect);
+        $('.nav-link').eq(navSelect).addClass('active');
+
       
       $(".nav-item").click(function(){
         $("#menu").modal('hide');

@@ -113,22 +113,26 @@ app.get('/product', async (req, res) => {
     // Render the view with the provided data
     res.render("frontend/product", {
         newListItems: items,
+        navSelect: 0 + 5,
     });
 })
 
 app.get("/product/:category", async (req, res) => {
     // get category's name from path
     let category = (req.params.category);
+   
 
     // use category's name to find category's id
     const categoryName = await listCategory.findAllByKey('name', category);
-    console.log(categoryName[0].category_id);
+    const categoryId = categoryName[0].category_id;
+    console.log(categoryId);
     
     // find product by category's id
-    const items = await listProduct.findAllByKey('category_id', categoryName[0].category_id);
+    const items = await listProduct.findAllByKey('category_id', categoryId);
     
     res.render("frontend/product", {
         newListItems: items,
+        navSelect: parseInt(categoryId) + 5,
     });
 
   });
@@ -185,16 +189,6 @@ app.get('/admin/inventory/:category', Authen.adminAuthentication, async (req, re
 app.get('/admin/sales', Authen.adminAuthentication, (req, res) => {
     res.render("backoffice/sales", { pageName: "sales" });
 })
-
-app.get('/admin/tops', Authen.adminAuthentication, async (req, res) => {
-    const items = await listProduct.findAllByKey('category_id', 1);
-    res.render("backoffice/inventory",
-        {
-            pageName: "inventory",
-            products: items,
-            secondTabSelect: 3,
-        });
-});
 
 
 app.listen(3500, () => {

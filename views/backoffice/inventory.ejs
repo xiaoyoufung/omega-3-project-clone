@@ -44,8 +44,9 @@
                                     </div>
                                 </td>
                                 <td>
-                                    
                                     <select type="number" class="form-control" size="1">
+
+                                        <!-- ถ้าช่วย optimize โดยใช้ loop เช้ามาช่วยได้จะดีมาก -->
                                         <% if( products[i].category_id == 1 ) { %>
                                             <option value="1" selected="selected">1 (Tops)</option>
                                             <option value="2">2 (Bottoms)</option>
@@ -63,11 +64,13 @@
                                             <option value="2">2 (Bottoms)</option>
                                             <option value="3">3 (Shoes)</option>
                                         <% } %>
+
                                     </select>
                                 </td>
                                 <td>
-
                                     <select type="text" class="form-control">
+
+                                        <!-- ถ้าช่วย optimize โดยใช้ loop เช้ามาช่วยได้จะดีมาก -->
                                         <% if( products[i].product_tag == '' ) { %>
                                             <option value="" selected="selected">(-)</option>
                                             <option value="New">New</option>
@@ -94,6 +97,7 @@
                                             <option value="Sale">Sale</option>
                                             <option value="New">Limited</option>
                                         <% } %>
+                                        
                                     </select>
                                 </td>
                                 <td><input type="number" value="<%= products[i].product_price %>" class="form-control"></td>

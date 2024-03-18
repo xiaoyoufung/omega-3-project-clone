@@ -73,7 +73,7 @@
         padding-top: 0;
         border-radius: 10px; 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        padding: 7rem;
+        padding: 3rem;
         padding-bottom: 4rem;
     
         .img-container {
@@ -92,16 +92,16 @@
                 }
 
                 img {
-                    min-width: 15em;
-                    min-height: 21em;
-                    max-width: 20em;
-                    max-height: 28em;
-                    width: 20vw;
-                    height: 28vw;
+                    min-width: 5em;
+                    min-height: 7em;
+                    max-width: 15em;
+                    max-height: 21em;
+                    width: 15vw;
+                    height: 21vw;
                     border-radius: 5px;
-                    object-fit:scale-down;
+                    object-fit:cover;
 
-                    @media (min-width: 992px) { /* Adjusts for large screens */
+                    @media (max-width: 991px) { /* Adjusts for large screens */
                         .Product-list .img-container .item {
                           flex: 0 0 auto;
                           width: 20%; /* Forces 5 items per row */

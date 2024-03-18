@@ -65,11 +65,25 @@ class BaseSQLModel {
     return result.affectedRows;
   }
 
+  async updateProduct(id, data) {
+    const query = `UPDATE ${this.tableName} SET ? WHERE product_id = ?`;
+    const result = await this.executeQuery(query, [data, id]);
+    return result.affectedRows;
+  }
+
   async delete(id) {
     const query = `DELETE FROM ${this.tableName} WHERE id = ?`;
     const result = await this.executeQuery(query, [id]);
     return result.affectedRows;
   }
+
+  async deleteByKey(key, value) {
+    const query = `DELETE FROM ${this.tableName} WHERE ${key} = ?`;
+    const results = await this.executeQuery(query, [value]);
+    return results;
+  }
 }
+
+
 
 module.exports = BaseSQLModel;

@@ -9,7 +9,12 @@
               <a class="btn login" href="/login"><i class="bi bi-person-circle"> Log in</i></a>
             <% } else { %>
               Welcome back,
-              <a class="btn account" href=""><b><%= session.user.username %></b></a>
+              <% if(session.isAdmin){ %>
+                <a class="btn account" href="/admin"><b><%= session.user.username %></b></a>
+              <% } else { %>
+                <a class="btn account" href="#"><b><%= session.user.username %></b></a>
+              <% } %>
+              
               <a class="btn logout" href="/logout">Log Out</a>
             <% } %>
 

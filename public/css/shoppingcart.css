@@ -1,8 +1,3 @@
-.navbar, #secondNav {
-    /* background-color: var(--silver); */
-}
-
-
 .editnav {
     background-color: var(--silver);
     width: 100%;
@@ -29,6 +24,8 @@
     justify-content: space-around;
     min-height: calc(100vh - 17.2em);
     padding-top: 15em;
+    padding-bottom: 8em;
+    width: 100vw;
 
     .rounded-table {
         border-collapse: separate;
@@ -54,87 +51,62 @@
     }
 
     .rounded-table thead th, .rounded-table tbody td {
-        border: 1px solid #dee2e6; /* You can customize the border style */
+        /* border: 1px solid #dee2e6; You can customize the border style */
     }
 
     .row_fix{
         width: 100%;
     }
 
-    .item {
-        position: relative;
-        padding: 10px;
-        margin: 10px;
+    tr, td{
+        text-align: center;
+        vertical-align: middle;
+        color: var(--onyx);
+        height: fit-content;
+    }
 
-        @media screen and (max-width: 992px) {
-            margin-bottom: 15vw;
-        }
+    .item {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
 
         img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
+            min-width: 5rem;
+            min-height: 7rem;
+            width: 10vw;
+            height: 14vw;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: all ease 0.3s;
-            opacity: 1;
-            cursor: pointer;
-
-            @media (max-width: 991px) {
-                width: 20vw;
-                height: 28vw;
-            }
-        }
-
-        img:hover {
-            opacity: 0.8;
         }
 
         .item-info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            text-align: left;
+            margin-left: 10px;
             padding: 10px;
-            margin: 10px;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: all ease 0.3s;
-            opacity: 1;
-            cursor: pointer;
 
-            h3 {
-                font-size: 2.5vw;
-                color: var(--onyx);
-                padding: 10px;
-            }
-
-            p {
-                font-size: 2vw;
-                color: var(--onyx);
-                padding: 10px;
-            }
-
-            p:hover {
-                color: var(--onyx);
-            }
-
-            a {
-                transition: all ease 0.3s;
-                color: var(--onyx);
-                opacity: 1;
-                font-size: 3em;
+            h5 {
+                font-size: 2rem;
             }
         }
-    }
 
-    .header{
-        background-color: var(--silver);
-        width: 100%;
+        .price{
+            width: fit-content;
+        }
+
+        
     }
-}
-h2 {
-    text-align: center;
+    .qty{
+        .quantityNum{
+            font-weight: bold;
+        }
+        button{
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+        .btn-delete{
+            margin-left: 0.5rem;
+        }
+    }
 }

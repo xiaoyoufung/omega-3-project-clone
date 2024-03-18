@@ -296,7 +296,7 @@ body.modal-open #main{
                     font-style: bold;
                     align-self: flex-end;
                     margin-top: 1.5rem;
-                    font-size: 2rem;
+                    font-size: 2.5rem;
 
                     @media screen and (max-width: 991px){
                         align-self: center;
@@ -316,9 +316,6 @@ body.modal-open #main{
                         }
                         a:active, a:hover{
                             color: var(--falu-red);
-                        }
-                        .bi-heart:hover::before, .bi-heart:active{
-                            content: '\F415';
                         }
                         .bi-cart:hover::before, .bi-cart:active{
                             content: '\F23D';
@@ -432,9 +429,6 @@ body.modal-open #main{
                     }
                     a:active{
                         color: var(--white);
-                    }
-                    .bi-heart:hover::before, .bi-heart:active{
-                        content: '\F415';
                     }
                     .bi-cart:hover::before, .bi-cart:active{
                         content: '\F23D';

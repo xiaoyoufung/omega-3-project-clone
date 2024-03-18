@@ -125,7 +125,6 @@ app.get("/product/:category", async (req, res) => {
     // use category's name to find category's id
     const categoryName = await listCategory.findAllByKey('name', category);
     const categoryId = categoryName[0].category_id;
-    console.log(categoryId);
     
     // find product by category's id
     const items = await listProduct.findAllByKey('category_id', categoryId);

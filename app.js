@@ -224,9 +224,6 @@ app.post('/admin/inventory', (req, res) => {
 
     listProduct.updateProduct(prodID, updateProduct)
 
-    
-    console.log(prodImg, prodName, prodPrice, prodProPrice, prodTag);
-
     res.redirect('/admin');
 });
 

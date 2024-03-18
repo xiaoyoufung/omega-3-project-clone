@@ -217,7 +217,9 @@ app.post('/admin/inventory', (req, res) => {
     const updateProduct = {
         product_name: prodName,
         category_id: prodCategory,
-        product_price: prodPrice
+        product_image: prodImg,
+        product_price: prodPrice,
+        product_price_promotion: prodProPrice,
     }
 
     listProduct.updateProduct(prodID, updateProduct)

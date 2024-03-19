@@ -50,10 +50,6 @@
         border-bottom-right-radius: 10px;
     }
 
-    .rounded-table thead th, .rounded-table tbody td {
-        /* border: 1px solid #dee2e6; You can customize the border style */
-    }
-
     .row_fix{
         width: 100%;
     }

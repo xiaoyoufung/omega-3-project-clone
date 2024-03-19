@@ -651,7 +651,6 @@ body.modal-open #main{
 footer{
     width: 100vw;
     height: fit-content;
-    padding: 2rem;
     background-color: var(--silver);
     
     
@@ -660,18 +659,23 @@ footer{
         justify-content: space-between;
         align-items: center;
         float: left;
+        margin: 2rem;
+        width: 45vw;
         
         p{
             font-family: 'Courier New', Courier, monospace;
         }
     }
     .flex-box {
-        display: block;
-        width: 200px; /* Width of the box */
-        height: 200px; /* Height of the box */
-        background: #f0f0f0; /* Background color */
+        display: flex;
         float: right;
+        justify-content: center;
+        align-items: center;
+        
+        margin: 2rem;
+        width: 45vw;
+        height: 12em;
+        background: var(--white); /* Background color */
     }
-    
 }
 

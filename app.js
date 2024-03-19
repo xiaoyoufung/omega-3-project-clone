@@ -202,6 +202,11 @@ app.post('/add-item', (req, res) => {
     res.redirect('/admin');
 });
 
+app.post('/admin/inventory/:category', (req, res) => {
+
+    res.redirect('admin');
+})
+
 app.post('/admin/inventory', (req, res) => {
 
     // get changed value
@@ -220,6 +225,7 @@ app.post('/admin/inventory', (req, res) => {
         product_image: prodImg,
         product_price: prodPrice,
         product_price_promotion: prodProPrice,
+        product_tag: prodTag
     }
 
     listProduct.updateProduct(prodID, updateProduct)

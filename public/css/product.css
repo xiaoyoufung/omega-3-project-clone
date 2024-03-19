@@ -85,7 +85,6 @@
             .item{
                 position: relative;
                 padding: 10px;
-                margin: 10px;
 
                 @media screen and (max-width: 992px){
                     margin-bottom: 15vw;
@@ -94,25 +93,23 @@
                 img {
                     min-width: 5em;
                     min-height: 7em;
-                    max-width: 15em;
-                    max-height: 21em;
                     width: 15vw;
                     height: 21vw;
                     border-radius: 5px;
                     object-fit:cover;
 
                     @media (max-width: 991px) { /* Adjusts for large screens */
-                        .Product-list .img-container .item {
-                          flex: 0 0 auto;
-                          width: 20%; /* Forces 5 items per row */
-                        }
+                        min-width: 7.5em;
+                        min-height: 10.5em;
+                        width: 25vw;
+                        height: 35vw;
                     }
                 }
 
                 .icons{
                     display: flex;
                     justify-content: center;
-                    font-size: 2.5rem;
+                    font-size: 3vw;
                     margin-top: -1.5em;
 
                     @media screen and (max-width: 992px){
@@ -121,21 +118,23 @@
                     }
 
                     a{
-                        padding: 0 5vw;
+                        padding: 0;
                         display: table-cell;
                         color: var(--white);
+                        min-width: 5em;
+                        max-width: 15em;
+                        width: 15vw;
+                        border-bottom-left-radius: 5px; 
+                        border-bottom-right-radius: 5px;
+                        background-color: rgba(61, 61, 61, 0.3);
 
                         @media screen and (max-width: 992px){
-                            padding: 0 15vw;
-
+                            padding: 0;
                         }
 
                     }
                     a:active{
                         color: var(--white);
-                    }
-                    .bi-heart:hover::before, .bi-heart:active{
-                        content: '\F415';
                     }
                     .bi-cart:hover::before, .bi-cart:active{
                         content: '\F23D';

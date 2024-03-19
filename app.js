@@ -227,6 +227,7 @@ app.post('/admin/inventory', (req, res) => {
     res.redirect('/admin');
 });
 
-app.listen(3500, () => {
-    console.log('Server is running on port 3500');
+const PORT = 3500;
+app.listen(PORT, () => {
+    console.log('Server is running on port '+ PORT);
 });

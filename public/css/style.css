@@ -391,18 +391,12 @@ body.modal-open #main{
                 }
 
                 img {
-                    min-width: 15em;
-                    min-height: 21em;
-                    max-width: 20em;
-                    max-height: 28em;
                     width: 20vw;
                     height: 28vw;
                     border-radius: 5px;
                     object-fit: cover;
 
                     @media screen and (max-width: 991px){
-                        max-width: none;
-                        max-height: none;
                         width: 50vw;
                         height: 70vw;
                     }
@@ -411,7 +405,7 @@ body.modal-open #main{
                 .icons{
                     display: flex;
                     justify-content: center;
-                    font-size: 2.5rem;
+                    font-size: 3vw;
                     margin-top: -1.5em;
 
                     @media screen and (max-width: 991px){
@@ -420,13 +414,18 @@ body.modal-open #main{
                     }
 
                     a{
+                        width: 20vw;
+                        height: 1.5em;
                         padding: 0 5vw;
                         display: table-cell;
                         color: var(--white);
+                        border-bottom-left-radius: 5px; 
+                        border-bottom-right-radius: 5px;
+                        background-color: rgba(61, 61, 61, 0.3);
 
                         @media screen and (max-width: 991px){
+                            width: 50vw;
                             padding: 0 15vw;
-
                         }
 
                     }
@@ -434,6 +433,7 @@ body.modal-open #main{
                         color: var(--white);
                     }
                     .bi-cart:hover::before, .bi-cart:active{
+                        cursor: pointer;
                         content: '\F23D';
                     }
                 } 

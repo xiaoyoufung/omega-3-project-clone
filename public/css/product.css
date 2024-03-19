@@ -112,7 +112,7 @@
                     font-size: 3vw;
                     margin-top: -1.5em;
 
-                    @media screen and (max-width: 992px){
+                    @media screen and (max-width: 991px){
                         font-size: 5vw;
                         margin-top: -1.5em;
                     }
@@ -128,7 +128,7 @@
                         border-bottom-right-radius: 5px;
                         background-color: rgba(61, 61, 61, 0.3);
 
-                        @media screen and (max-width: 992px){
+                        @media screen and (max-width: 991px){
                             padding: 0;
                         }
 

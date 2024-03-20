@@ -138,15 +138,6 @@ app.get("/product/:category", async (req, res) => {
   });
 
 
-// user must login to access to these page
-app.get('/wishlist', (req, res) => {
-    res.render("frontend/wishlist");
-})
-
-// app.get('/cart', Authen.userAuthentication, (req, res) => {
-//     res.render("frontend/shoppingcart");
-// })
-
 // shpping cart
 
 app.get("/cart", function (req, res, next) {
@@ -206,6 +197,40 @@ app.get('/reduce/:reItem', function(req, res){
     cart.removeItem(productId);
     req.session.cart = cart;
     res.redirect('/cart');
+  });
+
+
+  // checkout order
+  app.post("/checkout", Authen.userAuthentication, async function (req, res) {
+    let cart = new Cart(req.session.cart);
+    let address = req.body.address;
+    let user = req.session.userId;
+  
+    // find order status
+      const findStatus = await Status.find({name: "Queue"}, {_id: 0});
+  
+    // find user's selected address
+    const findAddress = await User.find(
+      {_id: user, "addresses._id": address}, {addresses: 1, _id:0});
+    const insertAddress = findAddress[0].addresses[0];
+    console.log(insertAddress)
+  
+    // create new order
+    const order = new Order({
+      user: req.session.userId,
+      address: insertAddress,
+      cart: cart,
+      status: findStatus[0]
+    });
+    await order.save()
+    .then(function(result) {
+      req.session.cart = null;
+      req.session.orderID = order._id;
+      res.redirect('/order-complete');
+    })
+    .catch(function(err) {
+      handleError(err);
+    });
   });
   
 

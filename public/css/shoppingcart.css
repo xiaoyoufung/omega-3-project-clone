@@ -145,3 +145,25 @@
         }
     }
 }
+
+.empty{
+    text-align: center;
+    color: var(--white);
+
+    h1{
+        padding-top: 6rem;
+        padding-bottom: 1rem;
+    }
+    .btn{
+        background-color: var(--white);
+        font-size: 1rem;
+
+        @media screen and (max-width: 991px){
+            font-size: 1.5vw;
+        }
+    }
+    .btn:hover{
+        background-color: var(--falu-red);
+        color: var(--white);
+    }
+}

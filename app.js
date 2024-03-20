@@ -8,6 +8,7 @@ const listUser = require('./model/listUser');
 const session = require('express-session');
 const Authen = require("./control/user-authen");
 const store = new session.MemoryStore();
+const Cart = require('./model/cart');
 
 const app = express();
 
@@ -142,9 +143,71 @@ app.get('/wishlist', (req, res) => {
     res.render("frontend/wishlist");
 })
 
-app.get('/cart', Authen.userAuthentication, (req, res) => {
-    res.render("frontend/shoppingcart");
-})
+// app.get('/cart', Authen.userAuthentication, (req, res) => {
+//     res.render("frontend/shoppingcart");
+// })
+
+// shpping cart
+
+app.get("/cart", function (req, res, next) {
+    if(!req.session.cart) {
+      return res.render('frontend/shoppingcart', {products: null});
+    }
+    let cart = new Cart(req.session.cart);
+    console.log(cart)
+    res.render("frontend/shoppingcart", {
+      products: cart.generateArray(),
+      totalPrice: cart.totalPrice,
+    });
+  });
+
+// add item to cart
+app.get('/add-to-cart/:id', async function(req, res) {
+    let productId = req.params.id;
+    let cart = new Cart(req.session.cart ? req.session.cart : {});
+  
+    const product = await listProduct.findByProductId(productId);
+    if(!product) {
+      return res.redirect('/');
+    } else {
+        //console.log(product.product_id);
+      cart.add(product, product.product_id);
+      req.session.cart = cart;
+      console.log(req.session.cart);
+      res.redirect('/product');
+    }
+  });
+
+  // decrease qty of item when click 'minus' button in shopping-cart
+app.get('/reduce/:reItem', function(req, res){
+    let productId = req.params.reItem;
+    let cart = new Cart(req.session.cart ? req.session.cart : {});
+  
+    cart.reduceByOne(productId);
+    req.session.cart = cart;
+    res.redirect('/cart');
+  });
+  
+  // increase qty of item when click 'plus' button in shopping-cart
+  app.get('/add/:reItem', function(req, res){
+    let productId = req.params.reItem;
+    let cart = new Cart(req.session.cart ? req.session.cart : {});
+  
+    cart.increaseByOne(productId);
+    req.session.cart = cart;
+    res.redirect('/cart');
+  });
+  
+  // remove all items when click 'bin' button in shopping-cart
+  app.get('/remove/:reItem', function(req, res){
+    let productId = req.params.reItem;
+    let cart = new Cart(req.session.cart ? req.session.cart : {});
+  
+    cart.removeItem(productId);
+    req.session.cart = cart;
+    res.redirect('/cart');
+  });
+  
 
 // example
 app.get("/more", Authen.userAuthentication, function (req, res) {

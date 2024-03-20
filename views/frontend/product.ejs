@@ -54,7 +54,7 @@
             <div class="item col">
               <img src="<%= newListItems[i].product_image %>" alt="Top-Seller">
               <div class="icons">
-                <a><i href="/cart" class="bi bi-cart"></i></a>
+                <a href="/add-to-cart/<%= newListItems[i].product_id %>"><i class="bi bi-cart"></i></a>
               </div>
             </div>
             <% } %>

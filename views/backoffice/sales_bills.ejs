@@ -25,13 +25,15 @@
                     </thead>
                     <tbody>
                         <form action="" method="post">
+                            <% for (let i = 0; i < billLists.length; i++) { %>
                             <tr>
-                                <td><a href="" target="_blank" title="view details">5</a></td>
+                                <td><a href="" target="_blank" title="view details"><%= billLists[i].bill_id %></a></td>
                                 <input name="productID" type="hidden" value="3" />
-                                <td>18 March 2024 13:07:55</td>
-                                <td>$300</td>
+                                <td><%= billLists[i].bill_date %></td>
+                                <td>$<%= billLists[i].bill_price %></td>
                             </tr>
-                            <tr>
+                            <% } %>
+                            <!-- <tr>
                                 <td><a href="" target="_blank" title="view details">4</a></td>
                                 <input name="productID" type="hidden" value="3" />
                                 <td>16 March 2024 17:32:27</td>
@@ -54,7 +56,7 @@
                                 <input name="productID" type="hidden" value="3" />
                                 <td>14 March 2024 09:17:48</td>
                                 <td>$200</td>
-                            </tr>
+                            </tr> -->
                         </form>
                     </tbody>
                 </table>

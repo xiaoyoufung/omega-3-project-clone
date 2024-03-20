@@ -259,8 +259,9 @@ app.get('/admin/sales', Authen.adminAuthentication, (req, res) => {
     res.render("backoffice/sales", { pageName: "sales" });
 });
 
-app.get('/admin/bills', Authen.adminAuthentication, (req, res) => {
-    res.render("backoffice/sales_bills", { pageName: "bills" });
+app.get('/admin/bills', Authen.adminAuthentication, async (req, res) => {
+    const bills = await listBill.findAll();
+    res.render("backoffice/sales_bills", { pageName: "bills", billLists: bills});
 });
 
 app.get('/admin/delete-product/:id', (req, res) => {

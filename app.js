@@ -189,6 +189,10 @@ app.get('/admin/sales', Authen.adminAuthentication, (req, res) => {
     res.render("backoffice/sales", { pageName: "sales" });
 });
 
+app.get('/admin/bills', Authen.adminAuthentication, (req, res) => {
+    res.render("backoffice/sales_bills", { pageName: "bills" });
+});
+
 app.get('/admin/delete-product/:id', (req, res) => {
     let productID = parseInt(req.params.id);
 

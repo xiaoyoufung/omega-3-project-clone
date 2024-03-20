@@ -67,6 +67,7 @@ body{
 
     table{
         border-color: var(--onyx);
+        margin-bottom: 8em;
 
         td, th{
             width: 7vw;
@@ -75,13 +76,24 @@ body{
             vertical-align: middle;
             background-color: var(--white);
         }
+        td a{
+            text-decoration: none;
+            cursor: pointer;
+            color: var(--onyx);
+        }
         .prod-img{
             width: fit-content;
         }
         .img-container{
             display: flex;
             align-items: center;
+            justify-content: center;
             
+            .img{
+                object-fit: cover;
+                width: 5rem;
+                height: 7rem;
+            }
             .img-show{
                 float: left;
                 object-fit: cover;
@@ -125,6 +137,7 @@ body{
         z-index: 3;
         right: 0;
         padding: 1rem 0.5rem;
+        padding-bottom: 2rem;
     }
     button.btn{
         margin: auto 1rem auto 0;

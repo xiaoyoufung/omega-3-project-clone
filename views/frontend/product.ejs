@@ -33,9 +33,6 @@
         <!-- second nav -->
         <div class="container-fluid" id="secondNav">
           <div class="page-nav container-fluid w-100">
-            <button class="page-toggler" type="button" onclick="window.history.go(-1);">
-              <i class="bi bi-arrow-left"></i>
-            </button>
             <h1>Product</h1>
           </div>
           <div class="nav nav-product nav-pills nav-justified w-100">
@@ -62,11 +59,15 @@
             </div>
             <% } %>
 
-            <div >
-
-            </div>
 
           </div>
+
+            <div class="btn-container">
+              <a href="/product"><button class="btn">Previous Page</button></a>
+              <span>|</span>
+              <a href="/product"><button class="btn">Next Page</button></a>
+            </div>
+
         </div> 
       </div>
     </section>

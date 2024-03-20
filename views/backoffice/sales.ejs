@@ -15,11 +15,60 @@
             <%- include('../templates/backoffice/dashboard') %>
 
             <div id="main" class="col">
-                <div class="row">
-                    <div class="col">
-                        <h1>Sales History</h1>
-                        <p>Graphs here and what not</p>
-                    </div>
+                <table class="table">
+                    <thead class="sticky-top">
+                        <tr>
+                            <th scope="col">Product ID</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Product Image</th>
+                            <th scope="col">Sales Count</th>
+                            <th scope="col">Total Income</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <form action="" method="post">
+                            <tr>
+                                <td>3</td>
+                                <input name="productID" type="hidden" value="3" />
+                                <td>Shirt 3</td>
+                                <td class="prod-img">
+                                    <div class="img-container">
+                                        <span><img class="img" src="https://media.discordapp.net/attachments/1216787767233609818/1216788511156605070/ae3a0637923558dde2cae05674254e76.png?ex=660ae41b&is=65f86f1b&hm=a1f8420428f5d64f4b8c52514897c66a5e8da170e78e8fc4a5204c1a66deac4c&=&format=webp&quality=lossless&width=1000&height=1332" alt="product"></span>
+                                    </div>
+                                </td>
+                                <td>3</td>
+                                <input name="productSaleCount" type="hidden" value="3" />
+                                <td>$300</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <input name="productID" type="hidden" value="1" />
+                                <td>Shirt 1</td>
+                                <td class="prod-img">
+                                    <div class="img-container">
+                                        <span><img class="img" src="https://media.discordapp.net/attachments/1216787767233609818/1216788510472671304/20cce0c3014cb071508dba3a0c812ffb.png?ex=660ae41b&is=65f86f1b&hm=a840a32f9ff3831520fcdb202843153331912add8f949615c05345594440c2ba&=&format=webp&quality=lossless&width=1128&height=1128" alt="product"></span>
+                                    </div>
+                                </td>
+                                <td>2</td>
+                                <input name="productSaleCount" type="hidden" value="2" />
+                                <td>$200</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <input name="productID" type="hidden" value="6" />
+                                <td>Pants 1</td>
+                                <td class="prod-img">
+                                    <div class="img-container">
+                                        <span><img class="img" src="https://media.discordapp.net/attachments/1216787767233609818/1216789034219606136/72139c1ad973f6cf0ea11f200f1b6637.png?ex=660ae498&is=65f86f98&hm=77c86834a4c8b66470489070e65b40c8bf8631d663ddcfa2f16242320b9b2be9&=&format=webp&quality=lossless&width=1128&height=1128" alt="product"></span>
+                                    </div>
+                                </td>
+                                <td>1</td>
+                                <input name="productSaleCount" type="hidden" value="1" />
+                                <td>$100</td>
+                            </tr>
+                        </form>
+                    </tbody>
+                </table>
 
                 <!-- <div id="Screen-Size-Checker">
                     <div class="d-none d-xxl-block">XXL</div>

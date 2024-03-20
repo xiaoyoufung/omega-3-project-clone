@@ -42,14 +42,14 @@
             <% }else{ %>
                 <li class="nav-container">
                     <button data-bs-toggle="collapse" data-bs-target="#filter" class="nav-header align-middle">
-                        <h4><i class="bi bi-funnel-fill"></i> <span class="ms-1 d-none d-lg-inline"><b>Sort By</b></span></h4>
+                        <h4><i class="bi bi-funnel-fill"></i> <span class="ms-1 d-none d-lg-inline"><b>View By</b></span></h4>
                     </button>
                     <ul class="collapse show nav flex-column ms-1" id="filter">
                         <li>
-                            <a class="nav-link active" onclick="toggleActive(this)">T<span class="d-none d-lg-inline">op Seller</span></a>
+                            <a href="/admin/sales" class="nav-link" onclick="toggleActive(this)">T<span class="d-none d-lg-inline">op Seller</span></a>
                         </li>
                         <li>
-                            <a class="nav-link" onclick="toggleActive(this)">S<span class="d-none d-lg-inline">ales</span></a>
+                            <a href="/admin/bills" class="nav-link" onclick="toggleActive(this)">S<span class="d-none d-lg-inline">ales Bills</span></a>
                         </li>
                     </ul>
                 </li>

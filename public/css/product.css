@@ -1,44 +1,50 @@
-/* Second Nav */
-#secondNav{
-    
-
-    .page-nav {
-        background-color: var(--silver);
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;   
-
-        h1 {
-            order: 1;
-            padding-top: 12px;
-        }
-
-        .page-toggler {
-            order: 0;
-            padding-left: 0%;
-            position: fixed;
-            left: 3%;
-        }
-        
+#nav{
+    .navbar{
+        padding-bottom: 0;
     }
-    .nav-product{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-        .nav-link{
-            color: var(--onyx);
-            border-radius: 0;
+    
+    /* Second Nav */
+    #secondNav{
+        padding: 0;
 
-        }
-        .nav-link.active{
-            color: var(--white);
-            background-color: var(--falu-red);
-        }
-        .nav-link:hover:not(.active){
-            color: var(--white);
+        .page-nav {
             background-color: var(--silver);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;   
+
+            h1 {
+                order: 1;
+                padding-top: 12px;
+            }
+
+            .page-toggler {
+                order: 0;
+                padding-left: 0%;
+                position: fixed;
+                left: 3%;
+            }
+            
+        }
+        .nav-product{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            .nav-link{
+                color: var(--onyx);
+                border-radius: 0;
+
+            }
+            .nav-link.active{
+                color: var(--white);
+                background-color: var(--falu-red);
+            }
+            .nav-link:hover:not(.active){
+                color: var(--white);
+                background-color: var(--silver);
+            }
         }
     }
 }
@@ -48,8 +54,8 @@
     margin: 5px;
     color: var(--onyx);
     background-color: var(--onyx);
-    padding: 5vh;
-    padding-top: 20vh;
+    padding: 3rem;
+    padding-top: 15rem;
     
     h1 {
         text-align: left; 
@@ -144,15 +150,17 @@
         }
 
         button.btn{
-            margin-top: 3vh;
-            padding: 1vh 2vw 0 2vw;
+            padding: 0.5rem 1rem 0 1rem;
             border: none;
-            border-radius: 1vw;
-            font-size: 3vh;
-            height: 4rem;
+            border-radius: 1rem;
+            font-size: 2vw;
             color: var(--onyx);
             background-color: var(--silver);
             cursor: pointer;
+
+            @media screen and (max-width: 991px){
+                font-size: 3vw;
+            }
         }
         button.btn:hover{
             background-color: var(--falu-red);

@@ -2,94 +2,90 @@
                         
 
                             <% for (let i = 0; i < products.length; i++) { %>
-                                <form action="" method="post">
-                            <tr>
-                                <td><%= products[i].product_id %></td>
-                                <input name="productID" type="hidden" value="<%= products[i].product_id %>" />
-                                <td><input name="productName" type="text" value="<%= products[i].product_name %>" class="form-control"></td>
-                                <td class="prod-img">
-                                    <div class="img-container">
-                                        <span><img class="img-show" src="<%= products[i].product_image %>" alt="product"></span>
-                                        <span><input name="productImg" class="img-url form-control" type="url" value="<%= products[i].product_image %>"></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <select name="productCategory" type="number" class="form-control" size="1">
+                            <form action="" method="post">
+                                <tr>
+                                    <td><%= products[i].product_id %></td>
+                                    <input name="productID" type="hidden" value="<%= products[i].product_id %>" />
+                                    <td><input name="productName" type="text" value="<%= products[i].product_name %>" class="form-control"></td>
+                                    <td class="prod-img">
+                                        <div class="img-container">
+                                            <span><img class="img-show" src="<%= products[i].product_image %>" alt="product"></span>
+                                            <span><input name="productImg" class="img-url form-control" type="url" value="<%= products[i].product_image %>"></span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <select name="productCategory" type="number" class="form-control" size="1">
 
-                                        <option value="1">1 (Tops)</option>
-                                        <option value="2">2 (Bottoms)</option>
-                                        <option value="3">3 (Shoes)</option>
+                                            <!-- ถ้าช่วย optimize โดยใช้ loop เช้ามาช่วยได้จะดีมาก -->
+                                            <% if( products[i].category_id == 1 ) { %>
+                                                <option value="1" selected="selected">1 (Tops)</option>
+                                                <option value="2">2 (Bottoms)</option>
+                                                <option value="3">3 (Shoes)</option>
+                                            <% } else if( products[i].category_id == 2 ) { %>
+                                                <option value="1">1 (Tops)</option>
+                                                <option value="2" selected="selected">2 (Bottoms)</option>
+                                                <option value="3">3 (Shoes)</option>
+                                            <% } else if( products[i].category_id == 3 ) { %>
+                                                <option value="1">1 (Tops)</option>
+                                                <option value="2">2 (Bottoms)</option>
+                                                <option value="3"selected="selected">3 (Shoes)</option>
+                                            <% } else { %>
+                                                <option value="1">1 (Tops)</option>
+                                                <option value="2">2 (Bottoms)</option>
+                                                <option value="3">3 (Shoes)</option>
+                                            <% } %>
 
-                                        <!-- ถ้าช่วย optimize โดยใช้ loop เช้ามาช่วยได้จะดีมาก -->
-                                        <% if( products[i].category_id == 1 ) { %>
-                                            <option value="1" selected="selected">1 (Tops)</option>
-                                            <option value="2">2 (Bottoms)</option>
-                                            <option value="3">3 (Shoes)</option>
-                                        <% } else if( products[i].category_id == 2 ) { %>
-                                            <option value="1">1 (Tops)</option>
-                                            <option value="2" selected="selected">2 (Bottoms)</option>
-                                            <option value="3">3 (Shoes)</option>
-                                        <% } else if( products[i].category_id == 3 ) { %>
-                                            <option value="1">1 (Tops)</option>
-                                            <option value="2">2 (Bottoms)</option>
-                                            <option value="3"selected="selected">3 (Shoes)</option>
-                                        <% } else { %>
-                                            <option value="1">1 (Tops)</option>
-                                            <option value="2">2 (Bottoms)</option>
-                                            <option value="3">3 (Shoes)</option>
-                                        <% } %>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="productTag" type="text" class="form-control">
 
-                                    </select>
-                                </td>
-                                <td>
-                                    <select name="productTag" type="text" class="form-control">
-
-                                        <!-- ถ้าช่วย optimize โดยใช้ loop เช้ามาช่วยได้จะดีมาก -->
-                                        <% if( products[i].product_tag == '' ) { %>
-                                            <option value="" selected="selected">(-)</option>
-                                            <option value="New">New</option>
-                                            <option value="Sale">Sale</option>
-                                            <option value="New">Limited</option>
-                                        <% } else if( products[i].product_tag == 'New' ) { %>
-                                            <option value="">(-)</option>
-                                            <option value="New" selected="selected">New</option>
-                                            <option value="Sale">Sale</option>
-                                            <option value="New">Limited</option>
-                                        <% } else if( products[i].product_tag == 'Sale' ) { %>
-                                            <option value="">(-)</option>
-                                            <option value="New">New</option>
-                                            <option value="Sale" selected="selected">Sale</option>
-                                            <option value="New">Limited</option>
-                                        <% } else if( products[i].product_tag == 'Limited' ) { %>
-                                            <option value="">(-)</option>
-                                            <option value="New">New</option>
-                                            <option value="Sale">Sale</option>
-                                            <option value="New" selected="selected">Limited</option>
-                                        <% } else { %>
-                                            <option value="">(-)</option>
-                                            <option value="New">New</option>
-                                            <option value="Sale">Sale</option>
-                                            <option value="New">Limited</option>
-                                        <% } %>
-                                        
-                                    </select>
-                                </td>
-                                <td><input name="productPrice" type="number" value="<%= products[i].product_price %>" class="form-control"></td>
-                                <td><input name="productPromotionPrice" type="number" value="<%= products[i].product_price_promotion %>" class="form-control"></td>
-                                <td><%= products[i].product_sales_count %></td>
-                                <input name="productSaleCount" type="hidden" value="<%= products[i].product_sales_count %>" />
-                                <td>
-                                    <div class="btn-container">
-                                        <a href="/admin/update-product/<%=products[i].product_id%>">
-                                            <button type="submit" class="btn item-edit"><i class="bi bi-pencil-square"></i> Save</button>
-                                        </a>
-                                    </form>
-                                        <a href="/admin/delete-product/<%=products[i].product_id%>">
-                                            <button class="btn item-delete"><i class="bi bi-trash"></i> Delete</button> 
-                                        </a>   
-                                    </div>
-                                </td>
-                            </tr>
+                                            <!-- ถ้าช่วย optimize โดยใช้ loop เช้ามาช่วยได้จะดีมาก -->
+                                            <% if( products[i].product_tag == '' ) { %>
+                                                <option value="" selected="selected">(-)</option>
+                                                <option value="New">New</option>
+                                                <option value="Sale">Sale</option>
+                                                <option value="New">Limited</option>
+                                            <% } else if( products[i].product_tag == 'New' ) { %>
+                                                <option value="">(-)</option>
+                                                <option value="New" selected="selected">New</option>
+                                                <option value="Sale">Sale</option>
+                                                <option value="New">Limited</option>
+                                            <% } else if( products[i].product_tag == 'Sale' ) { %>
+                                                <option value="">(-)</option>
+                                                <option value="New">New</option>
+                                                <option value="Sale" selected="selected">Sale</option>
+                                                <option value="New">Limited</option>
+                                            <% } else if( products[i].product_tag == 'Limited' ) { %>
+                                                <option value="">(-)</option>
+                                                <option value="New">New</option>
+                                                <option value="Sale">Sale</option>
+                                                <option value="New" selected="selected">Limited</option>
+                                            <% } else { %>
+                                                <option value="">(-)</option>
+                                                <option value="New">New</option>
+                                                <option value="Sale">Sale</option>
+                                                <option value="New">Limited</option>
+                                            <% } %>
+                                            
+                                        </select>
+                                    </td>
+                                    <td><input name="productPrice" type="number" value="<%= products[i].product_price %>" class="form-control"></td>
+                                    <td><input name="productPromotionPrice" type="number" value="<%= products[i].product_price_promotion %>" class="form-control"></td>
+                                    <td><%= products[i].product_sales_count %></td>
+                                    <input name="productSaleCount" type="hidden" value="<%= products[i].product_sales_count %>" />
+                                    <td>
+                                        <div class="btn-container">
+                                            <a href="/admin/update-product/<%=products[i].product_id%>">
+                                                <button type="submit" class="btn item-edit"><i class="bi bi-pencil-square"></i> Save</button>
+                                            </a>
+                                            <a href="/admin/delete-product/<%=products[i].product_id%>">
+                                                <button class="btn item-delete"><i class="bi bi-trash"></i> Delete</button> 
+                                            </a>   
+                                        </div>
+                                    </td>
+                                </tr>
+                            </form>
                             <% } %>
 
                             <!-- <tr>

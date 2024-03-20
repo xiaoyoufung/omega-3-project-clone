@@ -660,7 +660,11 @@ footer{
         align-items: center;
         float: left;
         margin: 2rem;
-        width: 45vw;
+        width: 40vw;
+
+        @media screen and (max-width: 991px){
+            width: 35vw;
+        }
         
         p{
             font-family: 'Courier New', Courier, monospace;
@@ -674,9 +678,12 @@ footer{
         
         margin: 2rem;
         width: 45vw;
-        height: 12em;
+        height: 15em;
         background: var(--white); /* Background color */
+
+        @media screen and (max-width: 991px){
+            width: 40vw;
+            height: 20em;
+        }
     }
 }
-
-#map { height: 180px; }

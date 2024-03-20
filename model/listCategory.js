@@ -49,11 +49,6 @@ class CategoriesModel extends BaseSQLModel {
     );
   }
 
-  async getTodoItemsName(){
-    const results =  await this.findByColumn('name');
-    return results;
-
-  }
 }
 
 const CategoriesDB = new CategoriesModel();

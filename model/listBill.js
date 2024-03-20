@@ -1,7 +1,7 @@
 const BaseSQLModel = require("./baseSQLModel");
 
 // Create a new class for a specific table
-class TestModel extends BaseSQLModel {
+class BillsModel extends BaseSQLModel {
   constructor() {
     super("bill"); //table 'products'
   }
@@ -15,7 +15,7 @@ class TestModel extends BaseSQLModel {
         if (results[0] == undefined) {
           this.setinitialItems();
         } else {
-          console.log("All categories:", results);
+          console.log("All bills:", results);
         }
       })
       .catch((error) => {
@@ -47,7 +47,7 @@ class TestModel extends BaseSQLModel {
     defaultItems.forEach((item) =>
       this.create(item)
         .then((insertId) => {
-          console.log("New user created with ID:", insertId);
+          console.log("New bill created with ID:", insertId);
         })
         .catch((error) => {
           console.error("Error creating user:", error);
@@ -55,13 +55,30 @@ class TestModel extends BaseSQLModel {
     );
   }
 
-  async getTodoItemsName(){
-    const results =  await this.findByColumn('name');
-    return results;
+  async createNewBill(item_num, price){
+
+    const newItem = {
+      bill_date: new Date(),
+      number_of_items: item_num,
+      bill_price: price
+    };
+
+    const defaultItems = [newItem];
+
+    defaultItems.forEach((item) =>
+      this.create(item)
+        .then((insertId) => {
+          console.log("New user created with ID:", insertId);
+        })
+        .catch((error) => {
+          console.error("Error creating user:", error);
+        })
+    );
 
   }
+
 }
 
-const TestDB = new TestModel();
+const BillsDB = new BillsModel();
 
-module.exports = TestDB;
+module.exports = BillsDB;

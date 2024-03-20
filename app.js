@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const listCategory = require('./model/listCategory');
 const listProduct = require('./model/listProduct');
 const listUser = require('./model/listUser');
+const listBill = require('./model/listBill');
 
 // login-register sesstion
 const session = require('express-session');
@@ -140,7 +141,7 @@ app.get("/product/:category", async (req, res) => {
 
 // shpping cart
 
-app.get("/cart", function (req, res, next) {
+app.get("/cart",Authen.userAuthentication, function (req, res, next) {
     if(!req.session.cart) {
       return res.render('frontend/shoppingcart', {products: null});
     }
@@ -201,32 +202,13 @@ app.get('/reduce/:reItem', function(req, res){
 
 
   // checkout order
-  app.post("/checkout", Authen.userAuthentication, async function (req, res) {
+  app.get("/checkout", Authen.userAuthentication, async function (req, res) {
     let cart = new Cart(req.session.cart);
-    let address = req.body.address;
-    let user = req.session.userId;
   
-    // find order status
-      const findStatus = await Status.find({name: "Queue"}, {_id: 0});
-  
-    // find user's selected address
-    const findAddress = await User.find(
-      {_id: user, "addresses._id": address}, {addresses: 1, _id:0});
-    const insertAddress = findAddress[0].addresses[0];
-    console.log(insertAddress)
-  
-    // create new order
-    const order = new Order({
-      user: req.session.userId,
-      address: insertAddress,
-      cart: cart,
-      status: findStatus[0]
-    });
-    await order.save()
-    .then(function(result) {
+    await listBill.createNewBill(cart.totalQty, cart.totalPrice)
+    .then(function() {
       req.session.cart = null;
-      req.session.orderID = order._id;
-      res.redirect('/order-complete');
+      res.redirect('/');
     })
     .catch(function(err) {
       handleError(err);

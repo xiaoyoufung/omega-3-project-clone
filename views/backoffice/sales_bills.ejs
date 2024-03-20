@@ -27,7 +27,7 @@
                         <form action="" method="post">
                             <% for (let i = 0; i < billLists.length; i++) { %>
                             <tr>
-                                <td><a href="" target="_blank" title="view details"><%= billLists[i].bill_id %></a></td>
+                                <td><a href="/admin/bills/id" target="_blank" title="view details"><%= billLists[i].bill_id %></a></td>
                                 <input name="productID" type="hidden" value="3" />
                                 <td><%= billLists[i].bill_date %></td>
                                 <td>$<%= billLists[i].bill_price %></td>

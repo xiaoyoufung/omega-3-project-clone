@@ -264,6 +264,11 @@ app.get('/admin/bills', Authen.adminAuthentication, async (req, res) => {
     res.render("backoffice/sales_bills", { pageName: "bills", billLists: bills});
 });
 
+app.get('/admin/bills/id', Authen.adminAuthentication, async (req, res) => {
+    const bills = await listBill.findAll();
+    res.render("backoffice/bills", { pageName: "bills/id", billLists: bills});
+});
+
 app.get('/admin/delete-product/:id', (req, res) => {
     let productID = parseInt(req.params.id);
 

@@ -1,0 +1,27 @@
+/* Color Palette */
+:root{
+    --onyx: #3D3D3DFF;
+    --silver: #9C9C9C;
+    --white: #EBEBEB;
+    --falu-red: #712121FF;
+}
+
+
+/* Body */
+body{
+    font-family: 'Helvetica', sans-serif;
+}
+
+
+/* Main */
+#main{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: var(--onyx);
+    color: var(--white);
+    width: 100vw;
+    height: 100vh;
+
+}

@@ -20,6 +20,7 @@ const session = require('express-session');
 const Authen = require("./control/user-authen");
 const store = new session.MemoryStore();
 const Cart = require('./model/cart');
+const { uniq } = require('lodash');
 
 const app = express();
 
@@ -131,6 +132,7 @@ app.get('/product', async (req, res) => {
     res.render("frontend/product", {
         newListItems: items,
         navSelect: 0 + 4,
+        pageNum: 1
     });
 })
 
@@ -149,10 +151,31 @@ app.get("/product/:category", async (req, res) => {
     res.render("frontend/product", {
         newListItems: items,
         navSelect: parseInt(categoryId) + 4,
+        pageNum: 0,
     });
 
   });
 
+
+app.get("/product/page/:page", async (req, res) => {
+    // get category's name from path
+    let page = (req.params.page);
+   
+    console.log(page);
+    // // use category's name to find category's id
+    // const categoryName = await listCategory.findAllByKey('name', category);
+    // const categoryId = categoryName[0].category_id;
+ 
+    // // find product by category's id
+    const items = await listProduct.findAll();
+    
+    res.render("frontend/product", {
+        newListItems: items,
+        navSelect: 0 + 4,
+        pageNum: page
+    });
+
+});
 
 // shpping cart
 
@@ -295,14 +318,29 @@ app.get('/admin/top_seller', Authen.adminAuthentication, async (req, res) => {
 });
 
 app.get('/admin/bills', Authen.adminAuthentication, async (req, res) => {
+    const storedId = [];
+    const  storedBill = [];
     const bills = await listBill.sortByBillDate();
-    res.render("backoffice/sales_bills", { pageName: "bills", billLists: bills});
+    bills.forEach((bill) => {
+        storedId.push(bill.bill_id);
+    });
+   
+    uniqueArray = storedId.filter(function(item, pos) {
+        return storedId.indexOf(item) == pos;
+    })
+
+    for (let index = 0; index < uniqueArray.length; index++) {
+        const foundBill = await listBill.findByBillId(uniqueArray[index]);
+        storedBill.push(foundBill);
+    }
+    
+    res.render("backoffice/sales_bills", { pageName: "bills", listBill: storedBill , billID: uniqueArray});
 });
 
-app.get('/admin/bills/id', Authen.adminAuthentication, async (req, res) => {
-    const bills = await listBill.findAll();
-    console.log(bills);
-    res.render("backoffice/bills", { pageName: "bills/id", billLists: bills});
+app.get('/admin/bills/:id', Authen.adminAuthentication, async (req, res) => {
+    const id = req.params.id
+    const bills = await listBill.findAllByKey('bill_id', id);
+    res.render("backoffice/bills", { pageName: "bills/id", billLists: bills, id: id});
 });
 
 app.get('/admin/delete-product/:id', (req, res) => {

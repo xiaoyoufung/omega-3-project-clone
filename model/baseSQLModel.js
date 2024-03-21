@@ -89,6 +89,19 @@ class BaseSQLModel {
     return results;
   }
 
+  // find Bill
+  async findByBillId(id) {
+    const query = `SELECT * FROM ${this.tableName} WHERE bill_id = ? ORDER BY bill_date DESC`;
+    const results = await this.executeQuery(query, [id]);
+    return results[0];
+  }
+
+  async findByBillsId(column) {
+    const query = `SELECT * FROM ${this.tableName} WHERE bill_id = ${column}`;
+    const results = await this.executeQuery(query);
+    return results;
+  }
+
   // sort by
   async sortByBillDate() {
     const query = `SELECT * FROM ${this.tableName} ORDER BY bill_date DESC`;

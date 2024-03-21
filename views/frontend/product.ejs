@@ -14,8 +14,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/product.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/product.css">
 </head>
 <body>
 
@@ -50,23 +50,76 @@
         <div class="container-fluid">
           <div class="img-container row row-cols-2 row-cols-lg-5">
 
-            <% for (let i = 0; i < newListItems.length; i++) { %>
-            <div class="item col">
-              <img src="<%= newListItems[i].product_image %>" alt="Top-Seller">
-              <div class="icons">
-                <a href="/add-to-cart/<%= newListItems[i].product_id %>"><i class="bi bi-cart"></i></a>
-              </div>
+            <% if(pageNum == 1) { %>
+              <% for (let i = 0; i < 15; i++) { %>
+                <div class="item col">
+                  <img src="<%= newListItems[i].product_image %>" alt="Top-Seller">
+                  <div class="icons">
+                    <a href="/add-to-cart/<%= newListItems[i].product_id %>"><i class="bi bi-cart"></i></a>
+                  </div>
+                </div>  
+              <% } %>
             </div>
-            <% } %>
-
-
-          </div>
 
             <div class="btn-container">
-              <a href="/product"><button class="btn">Previous Page</button></a>
+              <!-- <a href="/product"><button class="btn">Previous Page</button></a> -->
               <span>|</span>
-              <a href="/product"><button class="btn">Next Page</button></a>
+              <a href="/product/page/2"><button class="btn">Next Page</button></a>
             </div>
+            <% } else if (pageNum == 2) { %>
+              <% for (let i = 15; i < 30; i++) { %>
+                <div class="item col">
+                  <img src="<%= newListItems[i].product_image %>" alt="Top-Seller">
+                  <div class="icons">
+                    <a href="/add-to-cart/<%= newListItems[i].product_id %>"><i class="bi bi-cart"></i></a>
+                  </div>
+                </div>  
+              <% } %>
+
+              </div>
+
+              <div class="btn-container">
+                <a href="/product/page/1"><button class="btn">Previous Page</button></a>
+                <span>|</span>
+                <a href="/product/page/3"><button class="btn">Next Page</button></a>
+              </div> 
+
+            <% } else if (pageNum == 0) { %>
+              <% for (let i = 0; i < newListItems.length; i++) { %>
+                <div class="item col">
+                  <img src="<%= newListItems[i].product_image %>" alt="Top-Seller">
+                  <div class="icons">
+                    <a href="/add-to-cart/<%= newListItems[i].product_id %>"><i class="bi bi-cart"></i></a>
+                  </div>
+                </div>  
+              <% } %>
+
+              </div>
+
+              <!-- <div class="btn-container">
+                <a href="/product/page/2"><button class="btn">Previous Page</button></a>
+                <span>|</span>
+                <a href="/product"><button class="btn">Next Page</button></a>
+              </div>  -->
+            <% } else{ %>
+              <% for (let i = 30; i < newListItems.length; i++) { %>
+                <div class="item col">
+                  <img src="<%= newListItems[i].product_image %>" alt="Top-Seller">
+                  <div class="icons">
+                    <a href="/add-to-cart/<%= newListItems[i].product_id %>"><i class="bi bi-cart"></i></a>
+                  </div>
+                </div>  
+              <% } %>
+
+              </div>
+
+              <div class="btn-container">
+                <a href="/product/page/2"><button class="btn">Previous Page</button></a>
+                <span>|</span>
+                <!-- <a href="/product"><button class="btn">Next Page</button></a> -->
+              </div> 
+            <% } %>
+         
 
         </div> 
       </div>

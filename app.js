@@ -45,6 +45,7 @@ app.get('/', async (req, res) => {
         await listCategory.defineInitialCategories();
         await listProduct.defineInitialProducts();
         await listUser.defineInitialUsers();
+        await listBill.defineInitialBills();
 
     } catch (error) {
         console.log(error);
@@ -82,7 +83,7 @@ app.post('/auth', async (req, res) => {
                         req.session.isAdmin = true;
                         res.redirect('/admin');
                     }
-                    
+
                     // check if user isAdmin
                     if (isAdmin == 0) {
                         req.session.isAdmin = false;
@@ -260,8 +261,9 @@ app.get('/admin/inventory/:category', Authen.adminAuthentication, async (req, re
         });
 });
 
-app.get('/admin/sales', Authen.adminAuthentication, (req, res) => {
-    res.render("backoffice/sales", { pageName: "sales" });
+app.get('/admin/top_seller', Authen.adminAuthentication, async (req, res) => {
+    const items = await listProduct.findAll();
+    res.render("backoffice/top_seller", { pageName: "top_seller", products: items});
 });
 
 app.get('/admin/bills', Authen.adminAuthentication, async (req, res) => {
@@ -271,6 +273,7 @@ app.get('/admin/bills', Authen.adminAuthentication, async (req, res) => {
 
 app.get('/admin/bills/id', Authen.adminAuthentication, async (req, res) => {
     const bills = await listBill.findAll();
+    console.log(bills);
     res.render("backoffice/bills", { pageName: "bills/id", billLists: bills});
 });
 

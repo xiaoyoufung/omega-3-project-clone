@@ -8,7 +8,7 @@ class BillsModel extends BaseSQLModel {
 
   //check if there is a record of todoItems in the database?
   // if there is no todoItems record, call setinitialItems() to define intial
-  async defineInitialCategories() {
+  async defineInitialBills() {
    
     const results = await this.findAll()
       .then((results) => {
@@ -27,18 +27,27 @@ class BillsModel extends BaseSQLModel {
 
   async setinitialItems() {
     const item1 = {
+      bill_id: 1,
       bill_date: new Date(),
       number_of_items: 5,
+      product_id: 2,
+      number_of_items: 1,
       bill_price: 23.55,
     };
     const item2 = {
+        bill_id: 1,
         bill_date: new Date(),
         number_of_items: 0,
+        product_id: 7,
+        number_of_items: 3,
         bill_price: 23.55,
     };
     const item3 = {
+        bill_id: 2,
         bill_date: new Date(),
         number_of_items: 10,
+        product_id: 10,
+        number_of_items: 5,
         bill_price: 23.55,
     };
 

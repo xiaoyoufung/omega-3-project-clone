@@ -16,9 +16,9 @@ body{
 /* Main */
 #main{
     display: flex;
+    justify-content: center;
     align-items: center;
     text-align: center;
-    justify-content: center;
     background-color: var(--onyx);
     color: var(--white);
     width: 100vw;

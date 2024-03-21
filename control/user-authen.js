@@ -16,7 +16,7 @@ module.exports.userAuthentication = async (req, res, next) => {
 
             // check if username & password in session is match with 
             const username = await listUser.findAllByKey('user_name', session_username);
-            console.log(username);
+            
             if (!username) {
                 return res.redirect('/logout');
             }
@@ -47,7 +47,7 @@ module.exports.adminAuthentication = async (req, res, next) => {
         } else{
             // check if username & password in session is match with 
             const username = await listUser.findAllByKey('user_name', session_username);
-            
+
             if (!username || !isAdminSession) {
                 return res.redirect('/login?q=session-expired');
             }

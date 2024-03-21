@@ -91,7 +91,7 @@ class BaseSQLModel {
 
   // sort by
   async sortByBillDate() {
-    const query = `SELECT * FROM ${this.tableName} ORDER BY bill_date`;
+    const query = `SELECT * FROM ${this.tableName} ORDER BY bill_date DESC`;
     const results = await this.executeQuery(query);
     return results;
   }

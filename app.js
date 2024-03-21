@@ -215,17 +215,26 @@ app.get('/reduce/:reItem', function(req, res){
   // checkout order
   app.get("/checkout", Authen.userAuthentication, async function (req, res) {
     let cart = new Cart(req.session.cart);
-    console.log(cart)
+
+    const products = cart.generateArray();
 
     let bill_id = Math.floor(Math.random() * 100000);
-  
-    await listBill.createNewBill(cart.totalQty, cart.totalPrice, bill_id)
-    .then(function() {
-      req.session.cart = null;
-      res.redirect('/');
-    })
-    .catch(function(err) {
-      handleError(err);
+
+    const billStoreIDs = [];
+
+    billStoreIDs.push(bill_id);
+
+    products.forEach(async (product) =>{
+        console.log(billStoreIDs[0]);
+        const prodID = product.item.product_id;
+        await listBill.createNewBill(cart.totalQty, cart.totalPrice, billStoreIDs[0], prodID)
+        .then(function() {
+          req.session.cart = null;
+          res.redirect('/');
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
     });
   });
   

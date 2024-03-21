@@ -64,16 +64,16 @@ app.get('/login', async (req, res) => {
 // log-in authentication for user & admin
 app.post('/auth', async (req, res) => {
     const { username, password } = req.body;
-    const oldUserName = await listUser.findAllByKey('user_name', username);
-    const oldPwd = await listUser.findAllByKey('user_password', password);
-    const isAdmin = await oldUserName[0].isAdmin;
+    const oldUser = await listUser.findAllByKey('user_name', username);
+    // const oldPwd = await listUser.findAllByKey('user_password', password);
+    const isAdmin = await oldUser[0].isAdmin;
 
     try {
         if (username && password) {
             if (req.session.authenticated) {
                 res.redirect('/');
             } else {
-                if (username == oldUserName[0].user_name && password == oldPwd[0].user_password) {
+                if (username == oldUser[0].user_name && password == oldUser[0].user_password) {
                     req.session.authenticated = true;
                     req.session.user = {
                         username, password

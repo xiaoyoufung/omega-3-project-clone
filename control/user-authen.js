@@ -7,7 +7,6 @@ module.exports.userAuthentication = async (req, res, next) => {
         
         // get logged in sessionID
         const loginSession = req.sessionID;
-        const isAdminSession = req.session.isAdmin;
 
         if (!loginSession) {
             return res.redirect('/logout');
@@ -17,7 +16,8 @@ module.exports.userAuthentication = async (req, res, next) => {
 
             // check if username & password in session is match with 
             const username = await listUser.findAllByKey('user_name', session_username);
-            if (!username || isAdminSession) {
+            console.log(username);
+            if (!username) {
                 return res.redirect('/logout');
             }
         }

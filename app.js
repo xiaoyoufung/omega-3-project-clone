@@ -4,7 +4,16 @@ const listCategory = require('./model/listCategory');
 const listProduct = require('./model/listProduct');
 const listUser = require('./model/listUser');
 const listBill = require('./model/listBill');
+
 const listSales = require('./model/listSales');
+
+const moment = require("moment");
+ 
+// 24 Hour format
+console.log(
+    moment()
+        .format("YYYY/MM/DD HH:mm:ss")
+);
 
 // login-register sesstion
 const session = require('express-session');

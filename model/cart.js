@@ -17,13 +17,12 @@ module.exports = function Cart(oldCart) {
 
     // click minus btn in shopping cart
     this.reduceByOne = function(id) {
+        
+        if(this.items[id].qty > 1) {
         this.items[id].qty--;
         this.items[id].price -= this.items[id].item.product_price_promotion;
         this.totalQty--;
         this.totalPrice -= this.items[id].item.product_price_promotion;
-
-        if(this.items[id].qty <= 0) {
-            delete this.items[id];
         }
     }
 

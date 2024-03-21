@@ -38,7 +38,8 @@ app.set("view engine", "ejs");
 
 app.get('/', async (req, res) => {
     try {
-        res.render("frontend/index");
+        const items = await listProduct.findAll();
+        res.render("frontend/index", {products: items});
 
         // Initial default data to the DB
         await listCategory.defineInitialCategories();
@@ -47,7 +48,7 @@ app.get('/', async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).send("Internal Server Error");
+        res.status(500).send("Internal Server Error " + error);
     }
 });
 
@@ -115,7 +116,7 @@ app.get('/product', async (req, res) => {
     // Render the view with the provided data
     res.render("frontend/product", {
         newListItems: items,
-        navSelect: 0 + 5,
+        navSelect: 0 + 4,
     });
 })
 
@@ -127,13 +128,13 @@ app.get("/product/:category", async (req, res) => {
     // use category's name to find category's id
     const categoryName = await listCategory.findAllByKey('name', category);
     const categoryId = categoryName[0].category_id;
-    
+ 
     // find product by category's id
     const items = await listProduct.findAllByKey('category_id', categoryId);
     
     res.render("frontend/product", {
         newListItems: items,
-        navSelect: parseInt(categoryId) + 5,
+        navSelect: parseInt(categoryId) + 4,
     });
 
   });
@@ -146,7 +147,7 @@ app.get("/cart",Authen.userAuthentication, function (req, res, next) {
       return res.render('frontend/shoppingcart', {products: null});
     }
     let cart = new Cart(req.session.cart);
-    console.log(cart)
+    //console.log(cart)
     res.render("frontend/shoppingcart", {
       products: cart.generateArray(),
       totalPrice: cart.totalPrice,
@@ -165,7 +166,7 @@ app.get('/add-to-cart/:id', async function(req, res) {
         //console.log(product.product_id);
       cart.add(product, product.product_id);
       req.session.cart = cart;
-      console.log(req.session.cart);
+    //   console.log(req.session.cart);
       res.redirect('/product');
     }
   });

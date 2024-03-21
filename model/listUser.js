@@ -15,7 +15,7 @@ class UsersModel extends BaseSQLModel {
         if (results[0] == undefined) {
           this.setinitialUsers();
         } else {
-          console.log("All user:", results);
+          //console.log("All user:", results);
         }
       })
       .catch((error) => {

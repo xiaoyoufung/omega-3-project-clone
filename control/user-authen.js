@@ -41,12 +41,12 @@ module.exports.adminAuthentication = async (req, res, next) => {
         
         if (!loginSession) {
             return res.redirect('/login?q=session-expired');
-        }
-
-        // check if username & password in session is match with 
-        const username = await listUser.findAllByKey('user_name', session_username);
-        if (!username || !isAdminSession) {
-            return res.redirect('/login?q=session-expired');
+        } else{
+            // check if username & password in session is match with 
+            const username = await listUser.findAllByKey('user_name', session_username);
+            if (!username || !isAdminSession) {
+                return res.redirect('/login?q=session-expired');
+            }
         }
         next();
     } catch (err) {

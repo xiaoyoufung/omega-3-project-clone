@@ -73,63 +73,50 @@
         <h1>Recommend</h1>
         <div id="recommend-carousel" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
+
+            <!-- Default Carousel -->
             <div class="carousel-item active">
               <div class="container-fluid row no-gutters">
-                <div class="col-lg-6 col-md-12"><img src="./Picture/dark.jpg" alt="Recommended"></div>
+                <div class="col-lg-6 col-md-12"><img src="<%= products[0].product_image %>" alt="Recommended"></div>
                 <div class="text-block col-lg-6 col-md-12">
                   <div class="item-text">
-                    <p class="item-name">monochromatic</p>
+                    <p class="item-name"><%= products[0].product_name %></p>
                     <p class="item-type">T-Shirt</p>
                   </div>
                   <div class="item-info ">
-                    <p class="tag">LIMITED</p>
-                    <div class="price">590 THB
+                    <p class="tag"><%= products[0].product_tag %></p>
+                    <div class="price"><%= products[0].product_price %> THB
                       <div class="icons">
-                        <a href="/cart"><i class="bi bi-cart"></i></a>
+                        <a href="/add-to-cart/<%= products[0].product_id %>"><i class="bi bi-cart"></i></a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <% for (let i = 1; i < 3; i++) { %>
             <div class="carousel-item">
               <div class="container-fluid row no-gutters">
-                <div class="col-lg-6 col-md-12"><img src="./Picture/Blackpants.jpg" alt="Recommended"></div>
+                <div class="col-lg-6 col-md-12"><img src="<%= products[i].product_image %>" alt="Recommended"></div>
                 <div class="text-block col-lg-6 col-md-12">
                   <div class="item-text">
-                    <p class="item-name">monochromatic</p>
-                    <p class="item-type">Trousers</p>
+                    <p class="item-name"><%= products[i].product_name %></p>
+                    <p class="item-type">T-Shirt</p>
                   </div>
                   <div class="item-info ">
-                    <p class="tag">SALE</p>
-                    <div class="price">490 THB
+                    <p class="tag"><%= products[i].product_tag %></p>
+                    <div class="price"><%= products[i].product_price %> THB
                       <div class="icons">
-                        <a href="/cart"><i class="bi bi-cart"></i></a>
+                        <a href="/add-to-cart/<%= products[i].product_id %>"><i class="bi bi-cart"></i></a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="carousel-item">
-              <div class="container-fluid row no-gutters">
-                <div class="col-lg-6 col-md-12"><img src="./Picture/Shoe.png" alt="Recommended"></div>
-                <div class="text-block col-lg-6 col-md-12">
-                  <div class="item-text">
-                    <p class="item-name">monochromatic</p>
-                    <p class="item-type">Sneakers</p>
-                  </div>
-                  <div class="item-info ">
-                    <p class="tag">NEW</p>
-                    <div class="price">790 THB
-                      <div class="icons">
-                        <a href="/cart"><i class="bi bi-cart"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <% } %>
+            
+
           </div>
           <a class="carousel-control-prev" href="#recommend-carousel" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -149,24 +136,14 @@
         <h1>Top Seller</h1>
         <div class="container-fluid">
           <div class="img-container row no-gutters">
+            <% for (let i = 3; i < 6; i++) { %>
             <div class="item col-lg-4 col-sm-12">
-              <img src="./Picture/Top-seller1.jpg" alt="Top-Seller">
+              <img src="<%= products[i].product_image %>" alt="Top-Seller">
               <div class="icons">
-                <a href="/cart"><i class="bi bi-cart"></i></a>
+                <a href="/add-to-cart/<%= products[i].product_id %>"><i class="bi bi-cart"></i></a>
               </div>
             </div>
-            <div class="item col-lg-4 col-sm-12">
-              <img src="./Picture/Top-seller2.jpg" alt="Top-Seller">
-              <div class="icons">
-                <a href="/cart"><i class="bi bi-cart"></i></a>
-              </div>
-            </div>
-            <div class="item col-lg-4 col-sm-12">
-              <img src="./Picture/Top-seller3.jpg" alt="Top-Seller">
-              <div class="icons">
-                <a href="/cart"><i class="bi bi-cart"></i></a>
-              </div>
-            </div>
+            <% } %>
           </div>
           <a href="/product"><button button class="btn" type="submit">View All</button></a>
         </div> 
@@ -181,7 +158,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       console.log("JS is working!");
-      
+
       $(".nav-item").click(function(){
         $("#menu").modal('hide');
       });

@@ -81,7 +81,15 @@
                                             </div>
                                             <div class="item-info">
                                                 <h5><%= product.item.product_name %></h5>
-                                                <p><%= product.item.category_id %></p>
+                                                <p>
+                                                    <% if( product.item.category_id == 1 ) { %>
+                                                        <%= 'Tops' %>
+                                                    <% } else if( product.item.category_id == 2 ) { %>
+                                                        <%= 'Bottoms' %>
+                                                    <% } else { %>
+                                                        <%= 'Shoes' %>
+                                                    <% } %>
+                                                </p>
                                             </div>
                                         </td>
                                         <td clas="price">

@@ -90,8 +90,6 @@ app.post('/auth', async (req, res) => {
                         res.redirect('/');
                     } 
                     
-
-                    console.log(req.session.isAdmin)
                 } else {
                     res.redirect('/login');
                 }
@@ -210,8 +208,11 @@ app.get('/reduce/:reItem', function(req, res){
   // checkout order
   app.get("/checkout", Authen.userAuthentication, async function (req, res) {
     let cart = new Cart(req.session.cart);
+    console.log(cart)
+
+    let bill_id = Math.floor(Math.random() * 100000);
   
-    await listBill.createNewBill(cart.totalQty, cart.totalPrice)
+    await listBill.createNewBill(cart.totalQty, cart.totalPrice, bill_id)
     .then(function() {
       req.session.cart = null;
       res.redirect('/');
@@ -267,7 +268,7 @@ app.get('/admin/top_seller', Authen.adminAuthentication, async (req, res) => {
 });
 
 app.get('/admin/bills', Authen.adminAuthentication, async (req, res) => {
-    const bills = await listBill.findAll();
+    const bills = await listBill.sortByBillDate();
     res.render("backoffice/sales_bills", { pageName: "bills", billLists: bills});
 });
 

@@ -88,7 +88,15 @@ class BaseSQLModel {
     const results = await this.executeQuery(query, [value]);
     return results;
   }
+
+  // sort by
+  async sortByBillDate() {
+    const query = `SELECT * FROM ${this.tableName} ORDER BY bill_date`;
+    const results = await this.executeQuery(query);
+    return results;
+  }
 }
+
 
 
 

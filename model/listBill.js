@@ -64,12 +64,14 @@ class BillsModel extends BaseSQLModel {
     );
   }
 
-  async createNewBill(item_num, price){
+  async createNewBill(item_num, price, billId, productId){
 
     const newItem = {
       bill_date: new Date(),
       number_of_items: item_num,
-      bill_price: price
+      bill_price: price,
+      bill_id: billId,
+      product_id: productId
     };
 
     const defaultItems = [newItem];

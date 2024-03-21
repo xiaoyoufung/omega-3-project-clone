@@ -1,8 +1,8 @@
                         <!-- Sample data -->
                         
-
+                        
                             <% for (let i = 0; i < products.length; i++) { %>
-                
+                                <form action="/admin/inventory" method="post">
                                 <tr>
                                     <td><%= products[i].product_id %></td>
                                     <input name="productID" type="hidden" value="<%= products[i].product_id %>" />
@@ -79,6 +79,7 @@
                                             <a href="/admin/update-product/<%=products[i].product_id%>">
                                                 <button type="submit" class="btn item-edit"><i class="bi bi-pencil-square"></i> Save</button>
                                             </a>
+                                            </form>
                                             <a href="/admin/delete-product/<%=products[i].product_id%>">
                                                 <button class="btn item-delete"><i class="bi bi-trash"></i> Delete</button> 
                                             </a>   

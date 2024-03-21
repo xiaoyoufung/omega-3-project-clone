@@ -59,7 +59,11 @@
             <div class="col-12">
                 <div class="table-responsive w-100">
                     <% if(products != undefined) { %>
-                    <table class="table rounded-table">
+
+                    <% if(products.length == 0) { %>
+                        <div class="col empty"><h1>Cart is empty...</h1><button class="btn" onclick="window.history.go(-1);">Go back to shopping</button></div>
+                    <% } else { %>
+                        <table class="table rounded-table">
                         <thead>
                             <tr>
                                 <th scope="col">Product</th>
@@ -68,33 +72,33 @@
                                 <th scope="col">Total</th>
                             </tr>
                         </thead>
-                        <tbody>
-
+                        <tbody>    
                                 <% products.forEach((product) => { %>
-                                <tr>
-                                    <td class="item">
-                                        <div>
-                                            <img src="<%= product.item.product_image %>" alt="<%= product.item.name %>" class="img-fluid">
-                                        </div>
-                                        <div class="item-info">
-                                            <h5><%= product.item.product_name %></h5>
-                                            <p><%= product.item.category_id %></p>
-                                        </div>
-                                    </td>
-                                    <td clas="price">
-                                        <s>$<%= product.item.product_price %></s>
-                                        <%= (product.item.product_price_promotion) %>
-                                    </td>
-                                    <td >
-                                        <div class="qty">
-                                            <a href="/reduce/<%= product.item.product_id %>"><button id="decrement" class="btn-qty"><i class="bi bi-dash"></i></i></button></a>
-                                            <span id="product_quantity" class="quantityNum">| <%= product.qty %> |</span>
-                                            <a href="/add/<%= product.item.product_id %>"><button id="increment" class="btn-qty"><i class="bi bi-plus"></i></i></button></a>
-                                            <a href="/remove/<%= product.item.product_id %>"><button id="delete" class="btn-delete"><i class="bi bi-trash"></i></button></a>
-                                        </div>
-                                    </td>
-                                    <td>$<%= (product.price).toFixed(2) %></td>
-                                </tr>
+                                    <tr>
+                                        <td class="item">
+                                            <div>
+                                                <img src="<%= product.item.product_image %>" alt="<%= product.item.name %>" class="img-fluid">
+                                            </div>
+                                            <div class="item-info">
+                                                <h5><%= product.item.product_name %></h5>
+                                                <p><%= product.item.category_id %></p>
+                                            </div>
+                                        </td>
+                                        <td clas="price">
+                                            <s>$<%= product.item.product_price %></s>
+                                            <%= (product.item.product_price_promotion) %>
+                                        </td>
+                                        <td >
+                                            <div class="qty">
+                                                <a href="/reduce/<%= product.item.product_id %>"><button id="decrement" class="btn-qty"><i class="bi bi-dash"></i></i></button></a>
+                                                <span id="product_quantity" class="quantityNum">| <%= product.qty %> |</span>
+                                                <a href="/add/<%= product.item.product_id %>"><button id="increment" class="btn-qty"><i class="bi bi-plus"></i></i></button></a>
+                                                <a href="/remove/<%= product.item.product_id %>"><button id="delete" class="btn-delete"><i class="bi bi-trash"></i></button></a>
+                                            </div>
+                                        </td>
+                                        <td>$<%= (product.price).toFixed(2) %></td>
+                                    </tr>
+                                
                                 <% }) %>
                             
                             <tr class="noBorder">
@@ -113,9 +117,10 @@
                                     <button class="btn" onclick="checkout()">Checkout</button>
                                 </td>
                             </tr>
-                            
                         </tbody>
                     </table>
+                    <% } %>
+
                     <% } else { %>
                         <div class="col empty">
                             <h1>Cart is empty...</h1>

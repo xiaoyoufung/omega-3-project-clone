@@ -78,15 +78,19 @@ app.post('/auth', async (req, res) => {
                     req.session.user = {
                         username, password
                     };
+                    if(isAdmin == 1){
+                        req.session.isAdmin = true;
+                        res.redirect('/admin');
+                    }
+                    
                     // check if user isAdmin
                     if (isAdmin == 0) {
                         req.session.isAdmin = false;
                         res.redirect('/');
-                    } else {
-                        req.session.isAdmin = true;
-                        res.redirect('/admin');
-                    }
+                    } 
+                    
 
+                    console.log(req.session.isAdmin)
                 } else {
                     res.redirect('/login');
                 }
@@ -142,7 +146,7 @@ app.get("/product/:category", async (req, res) => {
 
 // shpping cart
 
-app.get("/cart",Authen.userAuthentication, function (req, res, next) {
+app.get("/cart", Authen.userAuthentication, function (req, res, next) {
     if(!req.session.cart) {
       return res.render('frontend/shoppingcart', {products: null});
     }

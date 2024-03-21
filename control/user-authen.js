@@ -23,7 +23,7 @@ module.exports.userAuthentication = async (req, res, next) => {
         }
         next();
     } catch (err) {
-        //console.log(err);
+        console.log(err);
         //res.json({ msg: 'Server error. Please reload page after sometime' });
         res.redirect('/login');
     }
@@ -39,19 +39,23 @@ module.exports.adminAuthentication = async (req, res, next) => {
 
         // get logged in user's username from session
         const session_username = req.session.user.username;
+
+        console.log(session_username);
         
         if (!loginSession) {
             return res.redirect('/login?q=session-expired');
         } else{
             // check if username & password in session is match with 
             const username = await listUser.findAllByKey('user_name', session_username);
+            
+            if (!username || !isAdminSession) {
+                return res.redirect('/login?q=session-expired');
+            }
         }
-        if (!username || !isAdminSession) {
-            return res.redirect('/login?q=session-expired');
-        }
+
         next();
     } catch (err) {
-        //console.log(err);
+        console.log(err);
         //res.json({ msg: 'Server error. Please reload page after sometime' });
         res.redirect('/login');
     }

@@ -95,6 +95,12 @@ class BaseSQLModel {
     const results = await this.executeQuery(query);
     return results;
   }
+
+  async sortByIncome() {
+    const query = `SELECT * FROM ${this.tableName} ORDER BY total_income DESC`;
+    const results = await this.executeQuery(query);
+    return results;
+  }
 }
 
 

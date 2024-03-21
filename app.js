@@ -4,6 +4,7 @@ const listCategory = require('./model/listCategory');
 const listProduct = require('./model/listProduct');
 const listUser = require('./model/listUser');
 const listBill = require('./model/listBill');
+const listSales = require('./model/listSales');
 
 // login-register sesstion
 const session = require('express-session');
@@ -46,6 +47,7 @@ app.get('/', async (req, res) => {
         await listProduct.defineInitialProducts();
         await listUser.defineInitialUsers();
         await listBill.defineInitialBills();
+        await listSales.defineInitialSalesHistory();
 
     } catch (error) {
         console.log(error);
@@ -220,7 +222,14 @@ app.get('/reduce/:reItem', function(req, res){
     products.forEach(async (product) =>{
         console.log(billStoreIDs[0]);
         const prodID = product.item.product_id;
-        await listBill.createNewBill(cart.totalQty, cart.totalPrice, billStoreIDs[0], prodID)
+        const saleCount = product.item.product_sales_count;
+
+        console.log(product);
+        // update sale count
+        listProduct.updateProduct(prodID, {product_sales_count: (saleCount + product.qty)});
+
+        // add new bill
+        await listBill.createNewBill(product.qty, product.price, billStoreIDs[0], prodID)
         .then(function() {
           req.session.cart = null;
           res.redirect('/');
@@ -272,7 +281,7 @@ app.get('/admin/inventory/:category', Authen.adminAuthentication, async (req, re
 });
 
 app.get('/admin/top_seller', Authen.adminAuthentication, async (req, res) => {
-    const items = await listProduct.findAll();
+    const items = await listSales.sortByIncome();
     res.render("backoffice/top_seller", { pageName: "top_seller", products: items});
 });
 

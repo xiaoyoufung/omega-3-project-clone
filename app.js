@@ -4,16 +4,7 @@ const listCategory = require('./model/listCategory');
 const listProduct = require('./model/listProduct');
 const listUser = require('./model/listUser');
 const listBill = require('./model/listBill');
-
 const listSales = require('./model/listSales');
-
-const moment = require("moment");
- 
-// 24 Hour format
-console.log(
-    moment()
-        .format("YYYY/MM/DD HH:mm:ss")
-);
 
 // login-register sesstion
 const session = require('express-session');
@@ -319,7 +310,7 @@ app.get('/admin/top_seller', Authen.adminAuthentication, async (req, res) => {
 
 app.get('/admin/bills', Authen.adminAuthentication, async (req, res) => {
     const storedId = [];
-    const  storedBill = [];
+    const storedBill = [];
     const bills = await listBill.sortByBillDate();
     bills.forEach((bill) => {
         storedId.push(bill.bill_id);
@@ -334,12 +325,13 @@ app.get('/admin/bills', Authen.adminAuthentication, async (req, res) => {
         storedBill.push(foundBill);
     }
     
-    res.render("backoffice/sales_bills", { pageName: "bills", listBill: storedBill , billID: uniqueArray});
+    res.render("backoffice/sales_bills", { pageName: "bills", listBill: storedBill});
 });
 
 app.get('/admin/bills/:id', Authen.adminAuthentication, async (req, res) => {
     const id = req.params.id
     const bills = await listBill.findAllByKey('bill_id', id);
+    
     res.render("backoffice/bills", { pageName: "bills/id", billLists: bills, id: id});
 });
 

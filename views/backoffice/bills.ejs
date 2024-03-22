@@ -14,7 +14,7 @@
         <div class="container">
             <div class="bill-detail">
                 <h1>Bill ID: <%= id %></h1>
-                <!-- <span><%= ('billLists.bill_date').toLocaleString("en-GB", { timeZone: "Asia/Bangkok" }).replace(',',' '); %></span> -->
+                <span><%= (billLists[0].bill_date).toLocaleString("en-GB", { timeZone: "Asia/Bangkok" }).replace(',',' ');  %></span>
             </div>
             <% let total = 0; %>
             <% for(let i = 0; i < billLists.length; i++) { %>

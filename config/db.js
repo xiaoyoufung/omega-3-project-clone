@@ -2,7 +2,7 @@ const mysql = require("mysql2");
 
 let config =  { host: "127.0.0.1",
 user: "root",
-password: "Nammei_2547",
+password: "Tt@12362431",
 database: "backoffice"    
 };
 
